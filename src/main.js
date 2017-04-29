@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Weibo from './weibo.vue'
 
 //Vue.config.debug = true;
+
 Vue.use(VueRouter);
 
 new Vue({

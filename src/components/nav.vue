@@ -1,7 +1,7 @@
 <template>
 
     <div class="nav">
-        <div class="nav-head">
+        <div class="nav-head left">
             <div class="icon left">
                 <img src="#" height="40" width="80" alt="微博">
             </div>
@@ -20,6 +20,7 @@
                 </div>
                 <div class="nav-login left">
                     <a href="#" class="left">登录</a>
+                    <div class="block left">|</div>
                     <a href="#" class="left">注册</a>
                 </div>
             </div>
@@ -28,40 +29,36 @@
 
 </template>
 <style scoped>
-    a{
+    a {
         display: block;
         text-decoration: none;
         color: #696e78;
     }
-    .nav {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        overflow: hidden;
-    }
-    .left{
+
+    .left {
         float: left;
     }
 
-    .right{
+    .right {
         float: right;
     }
 
-    .nav .nav-head{
-        width: 1100px;
+    .nav .nav-head {
+        display: block;
+        position: relative;
+        width: 90%;
+        padding: 0 40px;
+        margin: 0 auto;
     }
 
-    @media screen and (max-width: 1000px) {
-        .nav .nav-head{
+    @media screen and (max-width: 1050px) {
+        .nav .nav-head {
             width: 800px;
         }
     }
+
     .icon {
         display: block;
-        margin-left: 40px;
         width: 80px;
         height: 40px;
         padding: 10px;
@@ -74,7 +71,7 @@
         padding: 10px;
     }
 
-    .nav-search input{
+    .nav-search input {
         display: block;
         padding: 5px 15px;
         width: 258px;
@@ -84,16 +81,16 @@
         outline-style: none;
     }
 
-    @media screen and (max-width: 1000px) {
-        .nav .nav-search input{
+    @media screen and (max-width: 1050px) {
+        .nav .nav-search input {
             width: 150px;
         }
     }
 
-    .search{
+    .search {
         display: block;
         position: absolute;
-        color: #696e78 ;
+        color: #696e78;
         top: 18px;
         right: 10px;
         float: left;
@@ -101,7 +98,7 @@
         height: 26px;
     }
 
-    .search:hover{
+    .search:hover {
         cursor: pointer;
     }
 
@@ -110,7 +107,8 @@
         padding: 10px;
 
     }
-    .nav-guild .nav-content{
+
+    .nav-guild .nav-content {
         display: block;
         width: 320px;
         height: 40px;
@@ -118,26 +116,42 @@
         color: #696e78;
     }
 
-    .nav-guild .nav-content ul{
+    .nav-guild .nav-content ul {
         list-style: none;
     }
 
-    .nav-guild .nav-content i{
+    .nav-guild .nav-content i {
         line-height: 40px;
     }
 
-    .nav-guild .nav-content a{
+    .nav-guild .nav-content a {
         height: 40px;
         line-height: 40px;
     }
-    .nav-guild .nav-login{
+
+    .nav-guild .nav-login {
         display: block;
+        position: relative;
         height: 40px;
         line-height: 40px;
     }
+
     .nav-login a{
-        margin: 0 10px;
+        padding: 0 10px;
     }
+
+    .nav-login a:hover {
+        cursor: pointer;
+    }
+
+    .nav-login .block {
+        display: block;
+        position: relative;
+        width: 1px;
+        height: 30px;
+        line-height: 40px;
+    }
+
 
 </style>
 <script>
