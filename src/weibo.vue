@@ -36,7 +36,7 @@
         width: 1060px;
         margin: 0 auto;
     }
-    @media screen and (max-width: 1040px){
+    @media screen and (max-width: 1050px){
         .main{
             width: 760px;
             margin: 0 auto;
@@ -51,6 +51,7 @@
         height: 60px;
         border-bottom: 1px solid #cacaca;
         z-index: 999;
+        background-color: #ffffff;
         overflow: hidden;
     }
     .content{
@@ -62,9 +63,11 @@
         z-index: 1;
     }
     .login{
+        margin-left: 20px;
         display: inline-block;
         position: relative;
         width: 240px;
+        padding: 0 16px;
         z-index: 10;
         border: 1px solid #ccc;
 
