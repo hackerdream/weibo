@@ -2,8 +2,10 @@
 
     <div class="nav">
         <div class="nav-head left">
-            <div class="icon left">
-                <img src="#" height="40" width="80" alt="微博">
+            <div class="logo left">
+                <a href="/" class="logo-box">
+                    <span class="logo-bg"></span>
+                </a>
             </div>
             <div class="nav-search left">
                 <input type="text" placeholder="大家都在搜">
@@ -57,17 +59,33 @@
         }
     }
 
-    .icon {
+    .logo {
         display: block;
         width: 80px;
-        height: 40px;
-        padding: 10px;
+        height: 50px;
+        padding: 6px 0;
+
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), not all, not all, not all {
+        .logo-box .logo-bg {
+            background-image: url(../../public/imgs/WB_logo-x2.png);
+            background-size: 60px 20px;
+        }
+    }
+
+    .logo-box .logo-bg {
+        display: block;
+        width: 80px;
+        height: 48px;
+        cursor: pointer;
+        background: url(../../public/imgs/WB_logo-x2.png) no-repeat 0 40%;
+        background-size: 80px 30px;
     }
 
     .nav .nav-search {
         display: block;
         position: relative;
-        margin-left: 20px;
         padding: 10px;
     }
 
