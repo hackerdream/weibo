@@ -8,8 +8,18 @@
             </div>
             <footer>
                 <div class="login-msg">
-
+                    <div class="login-memory">
+                        <input type="checkbox" value="记住密码">
+                        <span>记住我</span>
+                    </div>
+                    <div class="refoundPsd">
+                        <a>忘记密码</a>
+                    </div>
                 </div>
+                <div class="clearFLoat"></div>
+                <a class="login-weibo">
+                    <span>登录</span>
+                </a>
             </footer>
         </div>
     </div>
@@ -24,9 +34,10 @@
     }
     .login {
         width: 208px;
-        height: 400px;
-        background: #a3be8c;
+        font-size: 10px;
+        background-color: #ffffff;
         overflow: hidden;
+        color:#808080;
     }
 
     .login-box {
@@ -37,7 +48,7 @@
     }
 
     .login-box input {
-        width: 86%;
+        width: 186px;
         height: 26px;
         margin-top: 20px;
         padding: 5px 10px;
@@ -49,6 +60,50 @@
     }
     input:focus{
         border-color:#eb7350 !important;
+    }
+    .login-memory{
+        display: block;
+        width: 50%;
+        float: left;
+        height: 40px;
+        line-height: 40px;
+    }
+    .refoundPsd{
+        display: block;
+        width: 50%;
+        float: right;
+        height: 40px;
+        line-height: 40px;
+        text-align: right;
+    }
+    .refoundPsd a{
+        text-decoration: none;
+    }
+    .refoundPsd:hover{
+        cursor: pointer;
+    }
+    .clearFLoat{
+        clear: both;
+    }
+    .login-weibo{
+        display: block;
+        width: 206px;
+        height: 32px;
+        line-height: 30px;
+        background: #ff8140;
+        border: 1px solid #f77c3d;
+        border-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+        white-space: nowrap;
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        outline: none;
+        text-decoration: none;
+        margin-bottom: 40px;
+    }
+    .login-weibo:hover{
+        cursor: pointer;
     }
 </style>
 <script>

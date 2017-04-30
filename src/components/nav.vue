@@ -136,7 +136,11 @@
         line-height: 40px;
     }
 
-    .nav-login a{
+    .nav-content a:hover {
+        cursor: pointer;
+    }
+
+    .nav-login a {
         padding: 0 10px;
     }
 
