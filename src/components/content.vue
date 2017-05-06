@@ -4,8 +4,80 @@
         <div class="content">
             <div class="current-news">
                 <ul>
-                    <li class="current-new"></li>
-                    <li class="current-new"></li>
+                    <li :class="[{morePicture:true,onePicture:false}]" class="current-new">
+                        <div class="pic-tex">
+                            <div class="tex-box">
+                                <div class="text">
+                                    这里是内容你信吗，反正我信了今天是我們倆結婚五週年的日子，老公一早就跟我說了一聲Happy anniversary，
+                                    原本以為今年就在月子中心簡單的過，就像過去的每一天一樣，沒想到你們解孵特地去買了我好久沒吃的杯子蛋糕和
+                                    花給我驚喜而且今年的花多了一種-康乃馨️真的很特別，謝謝老公那麽有心，總是花心思給我驚喜️愛你，五週年快樂
+                                </div>
+                            </div>
+                            <div class="pic-box">
+                                <img src="../../public/imgs/mt1.jpg">
+                                <img src="../../public/imgs/mt2.jpg">
+                                <img src="../../public/imgs/mt3.jpg">
+                            </div>
+                            <div class="sub-info-box">
+                                <a src="">
+                                    <span class="info-face">
+                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                    </span>
+                                    <span style="font-size: 14px;float: left;line-height: 24px">
+                                        @师生情
+                                    </span>
+                                    <span class="info-time">
+                                        4月5日 23:23:10
+                                    </span>
+                                    <span class="info-com">
+                                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                        <em>20</em>
+                                    </span>
+                                    <span class="right-line"></span>
+                                    <span class="info-upvote">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                        <em>30</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="current-new" :class="[{morePicture:false,onePicture:true}]">
+                        <div class="pic-tex">
+                            <div class="tex-box">
+                                <div class="text">
+                                    这里是内容你信吗，反正我信了今天是我們倆結婚五週年的日子，老公一早就跟我說了一聲Happy anniversary，
+                                    原本以為今年就在月子中心簡單的過，就像過去的每一天一樣，沒想到你們解孵特地去買了我好久沒吃的杯子蛋糕和
+                                    花給我驚喜而且今年的花多了一種-康乃馨️真的很特別，謝謝老公那麽有心，總是花心思給我驚喜️愛你，五週年快樂
+                                </div>
+                            </div>
+                            <div class="pic-box">
+                                <img src="../../public/imgs/mt1.jpg">
+                            </div>
+                            <div class="sub-info-box">
+                                <a src="">
+                                    <span class="info-face">
+                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                    </span>
+                                </a>
+                                <span style="font-size: 14px;float: left;line-height: 24px">
+                                        @师生情
+                                    </span>
+                                <span class="info-time">
+                                        4月5日 23:23:10
+                                    </span>
+                                <span class="info-com">
+                                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                        <em>20</em>
+                                    </span>
+                                <span class="right-line"></span>
+                                <span class="info-upvote">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                        <em>30</em>
+                                    </span>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="content-ad">
@@ -22,13 +94,17 @@
     </div>
 
 </template>
-<style>
+<style scoped>
     ul li {
         display: block;
         list-style: none;
     }
 
-    .content{
+    a {
+        cursor: pointer;
+    }
+
+    .content {
         display: block;
         padding: 0 5px;
         overflow: hidden;
@@ -37,22 +113,155 @@
     .current-news {
         display: block;
         position: relative;
-        padding: 16px 16px;
-        border: 1px solid #ccc;
-        width: 728px;
-        background-color: #888888;
     }
 
-    .current-new {
+    .pic-tex {
+        overflow: hidden;
+    }
+
+    .morePicture {
         display: block;
-        width: 100%;
+        width: 720px;
         margin: 0 auto;
+        padding: 20px 20px;
         height: 240px;
-        background: #bf616a;
+        border: 1px solid #ccc;
+        background: #ffffff;
+    }
+
+    .onePicture {
+        display: block;
+        width: 720px;
+        margin: 0 auto;
+        padding: 20px 20px;
+        height: 120px;
+        border: 1px solid #ccc;
+        background: #ffffff;
+        overflow: hidden;
     }
 
     .current-new + .current-new {
         margin-top: 16px;
+    }
+
+    .morePicture .tex-box {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .onePicture .tex-box {
+        position: relative;
+        float: right;
+        width: 500px;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+
+    .morePicture .pic-box {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .onePicture .pic-box {
+        display: inline-block;
+        overflow: hidden;
+        width: 180px;
+    }
+
+    .morePicture .text {
+        line-height: 23px;
+        max-height: 46px;
+        _height: 46px;
+        font-size: 14px;
+        overflow: hidden;
+    }
+
+    .onePicture .text {
+        line-height: 23px;
+        max-height: 46px;
+        _height: 46px;
+        font-size: 14px;
+        overflow: hidden;
+    }
+
+    .morePicture .pic-box img {
+        display: inline;
+        width: 235px;
+        height: 130px;
+    }
+
+    .onePicture .pic-box img {
+        display: block;
+        float: right;
+        width: 180px;
+        height: 108px;
+    }
+
+    .morePicture .sub-info-box {
+        display: block;
+        height: 24px;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .onePicture .sub-info-box {
+        display: inline-block;
+        height: 24px;
+        width: 500px;
+        font-size: 14px;
+        float: right;
+        margin-top: -40px;
+        overflow: hidden;
+    }
+
+    .info-face {
+        float: left;
+        height: 24px;
+        margin-right: 5px;
+    }
+
+    .info-face img {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    .info-time {
+        float: left;
+        margin-left: 10px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .info-com {
+        float: right;
+        margin-right: 5px;
+        line-height: 24px;
+    }
+
+    .info-com:hover {
+        cursor: pointer;
+        color: #eb7350;
+    }
+
+    .right-line {
+        width: 0;
+        height: 10px;
+        border-right: 1px solid #ccc;
+        margin-top: 7px;
+        float: right;
+        margin-right: 5px;
+    }
+
+    .info-upvote {
+        float: right;
+        margin-right: 10px;
+        line-height: 24px;
+    }
+
+    .info-upvote:hover {
+        cursor: pointer;
+        color: #eb7350;
     }
 
     .content-ad {
@@ -61,25 +270,39 @@
         width: 728px;
         padding: 16px 16px;
         border: 1px solid #ccc;
-        background: #bf616a;
+        background: #fff;
     }
-    .current-news + .content-ad ,.content-ad + .hot-news{
+
+    .current-news + .content-ad, .content-ad + .hot-news {
         margin-top: 16px;
     }
-    .advertisement{
-        display:block;
+
+    .advertisement {
+        display: block;
         width: 100%;
         height: 160px;
     }
-    .hot-news{
+
+    .hot-news {
         display: block;
         width: 728px;
         padding: 16px 16px;
         border: 1px solid #ccc;
         height: 240px;
-        background: #E9DC51;
+        background: #fff;
     }
+
+
 </style>
 <script>
-    export default{}
+    export default{
+        data(){
+            return {
+
+                moreThreePicture: true,
+                lessThreePicture: false
+
+            }
+        }
+    }
 </script>
