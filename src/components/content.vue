@@ -82,12 +82,87 @@
             </div>
             <div class="content-ad">
                 <div class="advertisement">
-
+                    <a href="#">
+                        <img src="../../public/imgs/advertise.png" width="720" height="200">
+                    </a>
                 </div>
             </div>
             <div class="hot-news">
                 <ul>
-
+                    <li :class="[{morePicture:true,onePicture:false}]" class="current-new">
+                        <div class="pic-tex">
+                            <div class="tex-box">
+                                <div class="text">
+                                    这里是内容你信吗，反正我信了今天是我們倆結婚五週年的日子，老公一早就跟我說了一聲Happy anniversary，
+                                    原本以為今年就在月子中心簡單的過，就像過去的每一天一樣，沒想到你們解孵特地去買了我好久沒吃的杯子蛋糕和
+                                    花給我驚喜而且今年的花多了一種-康乃馨️真的很特別，謝謝老公那麽有心，總是花心思給我驚喜️愛你，五週年快樂
+                                </div>
+                            </div>
+                            <div class="pic-box">
+                                <img src="../../public/imgs/mt1.jpg">
+                                <img src="../../public/imgs/mt2.jpg">
+                                <img src="../../public/imgs/mt3.jpg">
+                            </div>
+                            <div class="sub-info-box">
+                                <a src="">
+                                    <span class="info-face">
+                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                    </span>
+                                    <span style="font-size: 14px;float: left;line-height: 24px">
+                                        @师生情
+                                    </span>
+                                    <span class="info-time">
+                                        4月5日 23:23:10
+                                    </span>
+                                    <span class="info-com">
+                                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                        <em>23231</em>
+                                    </span>
+                                    <span class="right-line"></span>
+                                    <span class="info-upvote">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                        <em>42313</em>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="current-new" :class="[{morePicture:false,onePicture:true}]">
+                        <div class="pic-tex">
+                            <div class="tex-box">
+                                <div class="text">
+                                    这里是内容你信吗，反正我信了今天是我們倆結婚五週年的日子，老公一早就跟我說了一聲Happy anniversary，
+                                    原本以為今年就在月子中心簡單的過，就像過去的每一天一樣，沒想到你們解孵特地去買了我好久沒吃的杯子蛋糕和
+                                    花給我驚喜而且今年的花多了一種-康乃馨️真的很特別，謝謝老公那麽有心，總是花心思給我驚喜️愛你，五週年快樂
+                                </div>
+                            </div>
+                            <div class="pic-box">
+                                <img src="../../public/imgs/mt1.jpg">
+                            </div>
+                            <div class="sub-info-box">
+                                <a src="">
+                                    <span class="info-face">
+                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                    </span>
+                                </a>
+                                <span style="font-size: 14px;float: left;line-height: 24px">
+                                        @师生情
+                                    </span>
+                                <span class="info-time">
+                                        4月5日 23:23:10
+                                    </span>
+                                <span class="info-com">
+                                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                        <em>12415</em>
+                                    </span>
+                                <span class="right-line"></span>
+                                <span class="info-upvote">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                        <em>20000</em>
+                                    </span>
+                            </div>
+                        </div>
+                    </li class="current-new">
                 </ul>
             </div>
         </div>
@@ -105,13 +180,13 @@
     }
 
     .content {
-        display: block;
-        padding: 0 5px;
+        width: 722px;
         overflow: hidden;
     }
 
     .current-news {
         display: block;
+        width: 720px;
         position: relative;
     }
 
@@ -121,7 +196,7 @@
 
     .morePicture {
         display: block;
-        width: 720px;
+        width: 680px;
         margin: 0 auto;
         padding: 20px 20px;
         height: 240px;
@@ -131,7 +206,7 @@
 
     .onePicture {
         display: block;
-        width: 720px;
+        width: 680px;
         margin: 0 auto;
         padding: 20px 20px;
         height: 120px;
@@ -165,7 +240,7 @@
     .onePicture .pic-box {
         display: inline-block;
         overflow: hidden;
-        width: 180px;
+        width: 160px;
     }
 
     .morePicture .text {
@@ -186,14 +261,14 @@
 
     .morePicture .pic-box img {
         display: inline;
-        width: 235px;
+        width: 220px;
         height: 130px;
     }
 
     .onePicture .pic-box img {
         display: block;
         float: right;
-        width: 180px;
+        width: 160px;
         height: 108px;
     }
 
@@ -235,7 +310,7 @@
 
     .info-com {
         float: right;
-        margin-right: 5px;
+        margin-right: 10px;
         line-height: 24px;
     }
 
@@ -267,31 +342,28 @@
     .content-ad {
         display: block;
         position: relative;
-        width: 728px;
-        padding: 16px 16px;
+        width: 720px;
         border: 1px solid #ccc;
         background: #fff;
     }
 
-    .current-news + .content-ad, .content-ad + .hot-news {
-        margin-top: 16px;
-    }
 
     .advertisement {
         display: block;
         width: 100%;
         height: 160px;
+        margin: 0 auto;
+        overflow: hidden;
     }
 
     .hot-news {
         display: block;
-        width: 728px;
-        padding: 16px 16px;
-        border: 1px solid #ccc;
-        height: 240px;
-        background: #fff;
+        width: 720px;
+        position: relative;
     }
-
+    .current-news + .content-ad, .content-ad + .hot-news {
+        margin-top: 16px;
+    }
 
 </style>
 <script>
