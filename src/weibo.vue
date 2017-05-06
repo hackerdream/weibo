@@ -30,7 +30,10 @@
     #weibo{
         padding-top: 60px;
         overflow: hidden;
-
+        background-color: #d4d5e0;
+        background-image:url("../public/imgs/body_bg.jpg");
+        background-repeat: repeat-x;
+        background-position: center 0;
     }
     .main{
         width: 1060px;
@@ -59,7 +62,6 @@
         position: relative;
         vertical-align: top;
         margin: 0 auto;
-        width: 760px;
         z-index: 1;
     }
     .login{
