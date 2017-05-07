@@ -1,16 +1,21 @@
 <template>
 
     <div id="weibo">
-        <w-nav class="nav"></w-nav>
-        <div class="main">
+        <w-nav class="nav"  @show-login="showLoginBox"></w-nav>
+        <section class="main">
             <w-content class="content"></w-content>
             <login class="login"></login>
-        </div>
+        </section>
         <footer>
             <p class="company">
                 <span>Copyright © 2017 weibo 信安三班某组</span>
             </p>
         </footer>
+
+        <div class="layer">
+            <div style="position: fixed; top: 0; left: 0; width: 100%; height:100%; background: rgb(0, 0, 0); opacity: 0.3; z-index: 100;"></div>
+            <login-layer class="login-layer" @close-layer="close"></login-layer>
+        </div>
     </div>
 </template>
 
@@ -18,10 +23,19 @@
     import WNav from './components/nav.vue'
     import WContent from './components/content.vue'
     import Login from './components/login.vue'
+    import LoginLayer from './components/loginLayer.vue'
 
     export default {
         components: {
-            WNav, WContent, Login
+            WNav, WContent, Login, LoginLayer
+        },
+        methods: {
+            close(){
+                document.getElementsByClassName('layer')[0].style.display = "none";
+            },
+            showLoginBox(){
+                document.getElementsByClassName('layer')[0].style.display = "block"
+            }
         }
     }
 </script>
@@ -63,7 +77,7 @@
         width: 100%;
         height: 60px;
         border-bottom: 1px solid #cacaca;
-        z-index: 999;
+        z-index: 99;
         background-color: #ffffff;
         overflow: hidden;
     }
@@ -92,9 +106,28 @@
             display: none;
         }
     }
-    .company{
+
+    .company {
         display: block;
         width: 300px;
         margin: 20px auto;
+    }
+
+    .layer {
+        display: none;
+
+    }
+
+    .login-layer {
+        display: block;
+        position: absolute;
+        width: 600px;
+        height: 400px;
+        top: 50%;
+        left: 50%;
+        margin-left: -300px;
+        margin-top: -200px;
+        z-index: 999;
+        background: #ffffff;
     }
 </style>
