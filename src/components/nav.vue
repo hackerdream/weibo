@@ -21,7 +21,7 @@
                     </ul>
                 </div>
                 <div class="nav-login left">
-                    <a href="#" class="left">登录</a>
+                    <a href="#" class="left" @click="showLogin">登录</a>
                     <div class="block left">|</div>
                     <a href="#" class="left">注册</a>
                 </div>
@@ -177,5 +177,11 @@
 
 </style>
 <script>
-    export default{}
+    export default{
+        methods:{
+            showLogin(){
+                this.$emit('show-login')
+            }
+        }
+    }
 </script>
