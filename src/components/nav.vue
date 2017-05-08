@@ -23,7 +23,7 @@
                 <div class="nav-login left">
                     <a href="#" class="left" @click="showLogin">登录</a>
                     <div class="block left">|</div>
-                    <a href="#" class="left">注册</a>
+                    <a  class="left" href="/register">注册</a>
                 </div>
             </div>
         </div>
