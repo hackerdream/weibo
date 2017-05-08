@@ -16,8 +16,12 @@ weibo.set('view engine', 'html');
 weibo.set('views', __dirname + '/src/views');
 
 weibo.get('/', function (req, res) {
-  res.render('index.html')
+  res.render('index.html');
 });
+
+weibo.get('/register',function (req, res) {
+  res.render('register.html');
+})
 
 weibo.listen(8000, function (req, res) {
   console.log("http://localhost:8000");
