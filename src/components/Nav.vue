@@ -16,7 +16,7 @@
                     <ul>
                         <li>
                             <i class="fa fa-home fa-2x left"></i>
-                            <a class="left">首页</a>
+                            <router-link to="/main" class="left">首页</router-link>
                         </li>
                     </ul>
                 </div>
@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+        <router-view></router-view>
     </div>
 
 </template>

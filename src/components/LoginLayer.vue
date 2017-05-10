@@ -2,7 +2,7 @@
     <div class="w-login">
         <div>
             <a class="close-layer" @click="closeLayer">
-                <em>x</em>
+                <em>X</em>
             </a>
         </div>
         <div class="login-info">

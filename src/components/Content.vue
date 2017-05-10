@@ -4,7 +4,7 @@
         <div class="content">
             <div class="current-news">
                 <ul>
-                    <li :class="[{morePicture:true,onePicture:false}]" class="current-new">
+                    <li :class="[{morePicture:true,onePicture:false}]" class="current-new" >
                         <div class="pic-tex">
                             <div class="tex-box">
                                 <div class="text">
@@ -166,6 +166,36 @@
                 </ul>
             </div>
         </div>
+        <div class="w-login">
+            <div class="login">
+                <h1>账号登录</h1>
+                <div class="login-box">
+                    <input type="text" placeholder="请输入用户名">
+                    <input type="password" placeholder="请输入密码">
+                </div>
+                <footer>
+                    <div class="login-msg">
+                        <div class="login-memory">
+                            <input type="checkbox" value="记住密码">
+                            <span>记住我</span>
+                        </div>
+                        <div class="refoundPsd">
+                            <a>忘记密码</a>
+                        </div>
+                    </div>
+                    <div class="clearFLoat"></div>
+                    <a class="login-weibo">
+                        <span>登录</span>
+                    </a>
+                </footer>
+            </div>
+        </div>
+        <footer>
+            <p class="company">
+                <span>Copyright © 2017 weibo 信安三班某组</span>
+            </p>
+        </footer>
+
     </div>
 
 </template>
@@ -173,10 +203,34 @@
     ul li {
         display: block;
         list-style: none;
+        cursor: pointer;
     }
 
     a {
         cursor: pointer;
+    }
+    .w-content{
+        width: 990px;
+        margin: 0 auto;
+        overflow: hidden;
+
+    }
+    @media screen and (max-width: 1000px) {
+        .w-content{
+            width: 722px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .w-content .w-login{
+            display: none;
+        }
+    }
+    .content {
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+        margin: 0 auto;
+        z-index: 1;
     }
 
     .content {
@@ -365,15 +419,112 @@
         margin-top: 16px;
     }
 
+    .w-login{
+        width: 224px;
+        display: inline-block;
+    }
+    .login {
+        margin-left: 20px;
+        position: relative;
+        width: 240px;
+        padding: 0 16px;
+        z-index: 10;
+        border: 1px solid #ccc;
+
+    }
+    .login h1{
+        padding: 10px 0 ;
+        width: 50%;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 1px solid #eb7350;
+    }
+    .login {
+        width: 208px;
+        font-size: 10px;
+        background-color: #ffffff;
+        overflow: hidden;
+        color:#808080;
+    }
+
+    .login-box {
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+    }
+
+    .login-box input {
+        width: 186px;
+        height: 26px;
+        margin-top: 20px;
+        padding: 5px 10px;
+        line-height: 30px;
+        border: 1px solid #ccc;
+        font-size: 10px;
+        border-radius: 4px;
+        outline-style: none;
+    }
+    input:focus{
+        border-color:#eb7350 !important;
+    }
+    .login-memory{
+        display: block;
+        width: 50%;
+        float: left;
+        height: 40px;
+        line-height: 40px;
+    }
+    .refoundPsd{
+        display: block;
+        width: 50%;
+        float: right;
+        height: 40px;
+        line-height: 40px;
+        text-align: right;
+    }
+    .refoundPsd a{
+        text-decoration: none;
+    }
+    .refoundPsd:hover{
+        cursor: pointer;
+    }
+    .clearFLoat{
+        clear: both;
+    }
+    .login-weibo{
+        display: block;
+        width: 206px;
+        height: 32px;
+        line-height: 30px;
+        background: #ff8140;
+        border: 1px solid #f77c3d;
+        border-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+        white-space: nowrap;
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        outline: none;
+        text-decoration: none;
+        margin-bottom: 40px;
+    }
+    .login-weibo:hover{
+        cursor: pointer;
+    }
+    .company {
+        display: block;
+        width: 300px;
+        margin: 20px auto;
+    }
+
 </style>
 <script>
     export default{
         data(){
             return {
-
                 moreThreePicture: true,
                 lessThreePicture: false
-
             }
         }
     }
