@@ -3,7 +3,6 @@
     <div id="weibo">
         <w-nav class="nav" @show-login="showLoginBox"></w-nav>
         <section class="main">
-            <w-content></w-content>
         </section>
 
 
@@ -11,7 +10,6 @@
             <div style="position: fixed; top: 0; left: 0; width: 100%; height:100%; background: rgb(0, 0, 0); opacity: 0.3; z-index: 100;"></div>
             <login-layer class="login-layer" @close-layer="close"></login-layer>
         </div>
-
         <router-view></router-view>
     </div>
 </template>

@@ -4,7 +4,7 @@
         <div class="content">
             <div class="current-news">
                 <ul>
-                    <li :class="[{morePicture:true,onePicture:false}]" class="current-new" >
+                    <router-link to="/home/1111" :class="[{morePicture:true,onePicture:false}]" class="current-new" >
                         <div class="pic-tex">
                             <div class="tex-box">
                                 <div class="text">
@@ -41,7 +41,7 @@
                                 </a>
                             </div>
                         </div>
-                    </li>
+                    </router-link>
                     <li class="current-new" :class="[{morePicture:false,onePicture:true}]">
                         <div class="pic-tex">
                             <div class="tex-box">
@@ -166,6 +166,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="w-login">
             <div class="login">
                 <h1>账号登录</h1>
@@ -190,12 +191,14 @@
                 </footer>
             </div>
         </div>
+
         <footer>
             <p class="company">
                 <span>Copyright © 2017 weibo 信安三班某组</span>
             </p>
         </footer>
 
+    <router-view></router-view>
     </div>
 
 </template>
@@ -208,6 +211,8 @@
 
     a {
         cursor: pointer;
+        color: black;
+        text-decoration: none;
     }
     .w-content{
         width: 990px;
