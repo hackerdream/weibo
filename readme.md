@@ -8,7 +8,12 @@ npm install
 其次 使用简易的后台时还需安装express环境
 npm insatll express express-session html
 
-然后运行webpack
+然后运行webpack,打包项目
+
+npm run build
+
+运行
+
 npm run dev
 
 运行start.js  使用地址即可使用
