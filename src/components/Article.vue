@@ -3,7 +3,27 @@
         <div class="article">
             <div class="article-item">
                 <div class="article-detail">
+                    <router-link to="#" class="article-detail-img">
+                        <img src="../../public/imgs/infoFace.jpg" width="50" height="50">
+                    </router-link>
+                    <div class="article-detail-info">
+                        <div class="wb-info">
+                            <router-link to="#"></router-link>
+                            <a>
+                                <i></i>
+                                <span>加关注</span>
+                            </a>
+                        </div>
+                        <div class="wb-time">
 
+                        </div>
+                        <div class="wb-text">
+
+                        </div>
+                        <div class="wb-img">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="article-feed-handle">
 
@@ -22,12 +42,16 @@
     </div>
 </template>
 <style scoped>
-
+    a{
+        cursor: pointer;
+        color: #2e2e2e;
+        text-decoration: none;
+    }
     .article {
         display: block;
         width: 800px;
         padding: 20px 20px;
-        margin: 0 auto;
+        margin: 16px auto 0;
         background-color: #e0e0e0;
         overflow: hidden;
     }
@@ -47,6 +71,26 @@
         background-color: #bf616a;
     }
 
+    .article-detail-img {
+        display: block;
+        float: left;
+        position: relative;
+    }
+    .article-detail-img img{
+        display: block;
+        border-radius: 50px;
+    }
+    .article-detail-info{
+        font-size: 13px;
+        height: 200px;
+        margin-left: 60px;
+        overflow: hidden;
+        background-color: #888888;
+    }
+    .article-detail-info a{
+        display: block;
+        width: 100%;
+    }
     .article-feed-handle {
         display: block;
         width: 100%;
