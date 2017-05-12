@@ -1,8 +1,6 @@
 var express = require('express');
 var ejs = require('ejs');
 var path = require('path');
-var favicon = require('serve-favicon');
-
 
 var weibo = express();
 
