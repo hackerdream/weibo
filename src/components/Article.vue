@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
     <div>
         <div class="article">
@@ -130,7 +131,7 @@
         margin: 16px auto 0;
         border: 1px solid #ccc;
         background-color: #fff;
-        overflow: auto;
+        overflow: hidden;
     }
 
     .article-item {
@@ -354,19 +355,48 @@
 
     export default{
         data(){
-            return{
-                face:[
+            return {
+                face: [
                     {
-                        name:"gello",
-                        age:12,
-                        children:{
-                            name:"hello"
+                        name: "gello",
+                        age: 12,
+                        children: [
+                            {
+                                name: "gello",
+                                age: 12,
+                            }, {
+
+                                name: "gello",
+                                age: 12,
+                            },
+                            {
+                                name: "gello",
+                                age: 12,
+                            },
+                            {
+                                name: "gello",
+                                age: 12,
+                            }
+                        ]
+                    },
+                    {
+                        name: "gello",
+                        age: 12,
+                        children: {
+                            name: "hello"
+                        }
+                    },
+                    {
+                        name: "gello",
+                        age: 12,
+                        children: {
+                            name: "hello"
                         }
                     }
                 ]
             }
         },
-        components:{
+        components: {
             Repeat
         }
 

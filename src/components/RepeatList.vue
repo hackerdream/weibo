@@ -2,11 +2,11 @@
 
     <div>
         <ul class="repeat">
-            <li class="repeat-list" v-for="item in face">
-                <div style="float: left;">
+            <li class="repeat-list" v-for="item in face" :style="[Padding]">
+                <div style="float: left;" v-if="isFace" class="repeat-face">
                     <img src="../../public/imgs/mt4.jpg" width="30" height="30">
                 </div>
-                <div class="repeat-info">
+                <div class="repeat-info" :style="[MarginLeft]">
                     <router-link to="#">
                         我是你爸爸：
                     </router-link>
@@ -44,8 +44,11 @@
                     </div>
                 </div>
 
-                <repeat-list v-if="item.children" :face="item.children" :improveCount="count" :style="[marginRight,childrenWidth]">
-
+                <repeat-list v-if="item.children"
+                             :face="item.children"
+                             :improveCount="count"
+                             :style="[Box,ChildrenWidth,Color]"
+                             :isFace='false'>
                 </repeat-list>
             </li>
         </ul>
@@ -64,8 +67,9 @@
         overflow: hidden;
     }
 
-    .repeat-info {
-        margin-left: 40px;
+    .repeat-list {
+        padding-top: 20px;
+        overflow: hidden;
     }
 
     .repeat-info a {
@@ -74,11 +78,9 @@
         cursor: pointer;
     }
 
-    .re-repeat {
-        padding: 16px 16px 10px;
-        float: right;
-        width: 92%;
-        background-color: #eaeaec;
+    .repeat-face {
+        display: inline-block;
+
     }
 
     .wb-row-line a:hover {
@@ -218,9 +220,13 @@
             face: {
                 type: [Array, Object, Number]
             },
-            improveCount:{
-                type:Number,
-                default:0
+            improveCount: {
+                type: Number,
+                default: 0
+            },
+            isFace: {
+                type: Boolean,
+                default: true
             }
         },
         data(){
@@ -233,20 +239,40 @@
                 this.showRepeat = !this.showRepeat;
             }
         },
-        computed:{
+        computed: {
             count(){
                 var c = this.improveCount;
-                return c++
+                return ++c;
             },
-            marginRight(){
+            MarginLeft(){
                 return {
-                    'float':'right'
+                    'margin-left': 40 - this.improveCount * 40 + 'px'
                 }
             },
-            childrenWidth(){
+            Box(){
                 return {
-                    'width':95+'%'
+                    'float': 'right',
+                    'padding': '16px'
                 }
+            },
+            ChildrenWidth(){
+                return {
+                    'width': 90 + '%'
+                }
+            },
+            Color(){
+                return {
+                    'background-color': '#eaeaec',
+                }
+            },
+            Padding(){
+                return {
+                    'padding-top': 20 - this.improveCount * 20 + 'px',
+                    'margin-top': this.improveCount * 10 + 'px',
+                    'border-bottom': this.improveCount+'px solid #d9d9d9'
+                }
+
+
             }
         }
 
