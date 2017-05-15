@@ -19,7 +19,6 @@ const router = new VueRouter({
 });
 
 new Vue({
-  el: '#app',
   router,
   render: h => h(Weibo)
-});
+}).$mount('#app');
