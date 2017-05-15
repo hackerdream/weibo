@@ -43,10 +43,8 @@
     #weibo {
         padding-top: 60px;
         overflow: hidden;
-        background-color: #d4d5e0;
-        background-image: url("../public/imgs/body_bg.jpg");
-        background-repeat: repeat-x;
-        background-position: center 0;
+        background: url(../public/imgs/body_bg2.jpg) no-repeat top center;
+        background-color: #1d0e2b;
     }
 
     .main {

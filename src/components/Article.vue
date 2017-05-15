@@ -360,38 +360,48 @@
                     {
                         name: "gello",
                         age: 12,
+                        repeat: false,
                         children: [
                             {
                                 name: "gello",
                                 age: 12,
-                            }, {
+                                repeat: false
+                            },
+                            {
 
                                 name: "gello",
                                 age: 12,
+                                repeat: false
                             },
                             {
                                 name: "gello",
                                 age: 12,
+                                repeat: false
                             },
                             {
                                 name: "gello",
                                 age: 12,
+                                repeat: false
                             }
                         ]
                     },
                     {
                         name: "gello",
                         age: 12,
-                        children: {
-                            name: "hello"
-                        }
+                        repeat: false,
+                        children: [{
+                            name: "hello",
+                            repeat: false
+                        }]
                     },
                     {
                         name: "gello",
                         age: 12,
-                        children: {
-                            name: "hello"
-                        }
+                        repeat: false,
+                        children: [{
+                            name: "hello",
+                            repeat: false
+                        }]
                     }
                 ]
             }

@@ -23,16 +23,16 @@
                         </div>
                         <div class="repeat-msg">
                             <a>
-                                <span style="color: #b0bdd0" @click="showRepeatInput">
+                                <span style="color: #b0bdd0" @click="item.repeat = !item.repeat">
                                 回复
                                 </span>
                             </a>
-                            <span class="W_arrow_bor W_arrow_bor_t" v-if="showRepeat">
+                            <span class="W_arrow_bor W_arrow_bor_t" v-if="item.repeat">
                                     <i class="S_bg2_br"></i>
                                 </span>
                         </div>
                     </div>
-                    <div class="re-repeat-detail" v-if="showRepeat">
+                    <div class="re-repeat-detail" v-if="item.repeat">
                         <div class="repeat-wr">
                             <textarea type="text" class="W-input"></textarea>
                         </div>
@@ -235,9 +235,7 @@
             }
         },
         methods: {
-            showRepeatInput(){
-                this.showRepeat = !this.showRepeat;
-            }
+
         },
         computed: {
             count(){

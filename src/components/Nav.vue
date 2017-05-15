@@ -15,15 +15,23 @@
                 <div class="nav-content left">
                     <ul>
                         <li>
-                            <i class="fa fa-home fa-2x left"></i>
-                            <router-link to="/home" class="left">首页</router-link>
+                            <router-link to="/home" class="left">
+                                <em class="fa fa-home fa-2x left"></em>
+                                <em>首页</em>
+                            </router-link>
                         </li>
                     </ul>
                 </div>
-                <div class="nav-login left">
+                <div class="nav-login left" v-if="!isLogin">
                     <a href="#" class="left" @click="showLogin">登录</a>
                     <div class="block left">|</div>
-                    <a  class="left" href="/register">注册</a>
+                    <a class="left" href="/register">注册</a>
+                </div>
+                <div class="nav-login left" v-if="isLogin">
+                    <router-link to="#">
+                        <em class="fa fa-user-o" aria-hidden="true"></em>
+                        <em>我是帅哥</em>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -36,6 +44,10 @@
         display: block;
         text-decoration: none;
         color: #696e78;
+    }
+
+    em {
+        font-style: normal
     }
 
     .left {
@@ -52,6 +64,14 @@
         width: 90%;
         padding: 0 40px;
         margin: 0 auto;
+    }
+
+    .nav-content a:hover {
+        color: #eb7350;
+    }
+
+    .nav-login a:hover {
+        color: #eb7350;
     }
 
     @media screen and (max-width: 1050px) {
@@ -102,7 +122,13 @@
 
     @media screen and (max-width: 1050px) {
         .nav .nav-search input {
+            display: block;
+            padding: 5px 15px;
             width: 150px;
+            height: 26px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline-style: none;
         }
     }
 
@@ -122,7 +148,7 @@
     }
 
     .nav-guild {
-        margin-left: -10px;
+        margin-right: 10px;
         padding: 10px;
 
     }
@@ -179,7 +205,13 @@
 </style>
 <script>
     export default{
-        methods:{
+        props: {
+            isLogin: {
+                type: Boolean,
+                default: false
+            }
+        },
+        methods: {
             showLogin(){
                 this.$emit('show-login')
             }
