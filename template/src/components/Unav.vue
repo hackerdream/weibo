@@ -3,7 +3,7 @@
     <div class="nav">
         <div class="nav-head left">
             <div class="logo left">
-                <a href="/" class="logo-box">
+                <a href="#" class="logo-box">
                     <span class="logo-bg"></span>
                 </a>
             </div>
@@ -22,12 +22,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="nav-login left" v-if="!isLogin">
-                    <a href="#" class="left" @click="showLogin">登录</a>
-                    <div class="block left">|</div>
-                    <a class="left" href="/register">注册</a>
-                </div>
-                <div class="nav-login left" v-if="isLogin">
+
+
+                <div class="nav-login left">
                     <router-link to="#">
                         <em class="fa fa-user-o" aria-hidden="true"></em>
                         <em>我是帅哥</em>
@@ -35,6 +32,7 @@
                 </div>
             </div>
         </div>
+
         <router-view></router-view>
     </div>
 

@@ -1,6 +1,6 @@
 <template>
 
-    <div id="weibo">
+    <div id="app">
 
         <w-nav class="nav" @show-login="showLoginBox"></w-nav>
 
@@ -40,25 +40,11 @@
         padding: 0;
     }
 
-    #weibo {
+    #app {
         padding-top: 60px;
         overflow: hidden;
         background: url(../public/imgs/body_bg2.jpg) no-repeat top center;
         background-color: #1d0e2b;
-    }
-
-    .main {
-        width: 990px;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-
-    @media screen and (max-width: 1000px) {
-        .main {
-            width: 722px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
     }
 
     .nav {
@@ -74,11 +60,6 @@
         overflow: hidden;
     }
 
-    @media screen  and (max-width: 1000px) {
-        .login {
-            display: none;
-        }
-    }
 
     .layer {
         display: none;

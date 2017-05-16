@@ -192,38 +192,7 @@
             </div>
         </div>
 
-        <div class="W-person-info" v-if="false">
-            <div style="display:block;width: 100%;height: 75px;background-image: url(../../public/imgs/profile_cover_s.jpg)">
-                <img src="../../public/imgs/mt4.jpg" width="50" height="50" alt="我是帅比"
-                     style="border-radius: 50%;position: absolute;top: 50%;left:50%;margin-top: -45px;margin-left: -25px;">
-            </div>
-            <div style="display: block;width: 228px;height: 70px;padding: 30px 16px">
-                <div style="display: block;text-align: center;  color: #918ea5;">
-                    <span>最帅的人</span>
-                </div>
-                <ul style="display: block;width: 228px;height: 35px;padding-top: 10px;padding-bottom: 10px"
-                    class="user-atten">
-                    <li>
-                        <router-link to="#">
-                            <strong>82</strong>
-                            <span>关注</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="#">
-                            <strong>72</strong>
-                            <span>粉丝</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="">
-                            <strong>5</strong>
-                            <span>微博</span>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
         <footer>
             <p class="company">
                 <span>Copyright © 2017 weibo 信安三班某组</span>
