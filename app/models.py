@@ -100,7 +100,7 @@ class Article(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     text = db.Column(db.Text(140))
     time = db.Column(db.DateTime, default=datetime.utcnow)
-    up = db.Colume(db.integer, default = 0)
+    up = db.Column(db.Integer, default = 0)
     comments = db.relationship('Comment', backref='article', lazy='dynamic')
 
     def __init__(self, **kwargs):

@@ -8,7 +8,7 @@ from .forms import *
 from flask_login import current_user
 from ..register.views import send_email
 from .. import db
-
+import os
 # @login.before_app_request
 # def before_request():
 #     if current_user.is_authenticated:
@@ -29,8 +29,8 @@ from .. import db
 def index(page=1):
     articles = Article.query.order_by(Article.time.desc())
     pagination = articles.paginate(page, 2, False)
-    return render_template('login.html', page=page, pagination=pagination,
-articles=articles, endpoint='login.index')
+    return render_template('./../../src/views/index.html', page=page, pagination=pagination,
+    articles=articles, endpoint='main.test')
 
 @login.route('/', methods=['GET', 'POST'])
 def user_login():
@@ -41,10 +41,10 @@ def user_login():
             login_user(user)
             if not user.confirmed:
                 email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
-                return render_template('login/unconfirmed.html', user=user, email_url=email_url)
-            return redirect(url_for('admin.homepage'))
+                return render_template('../templates/src/views/index.html', user=user, email_url=email_url)
+            return redirect(url_for('index'))
         flash(u'检查一下是不是邮箱或者密码输错了')
-    return render_template('login.html', form=form)
+    return render_template('src/views/index.html', form=form)
 
 
 @login.route('/logout')
@@ -52,7 +52,7 @@ def user_login():
 def logout():
     logout_user()
     flash('You have been logged out.')
-    return redirect(url_for('login.index'))
+    return redirect(url_for('main.test'))
 
 
 @login.route('/reset', methods=['GET', 'POST'])
@@ -68,10 +68,10 @@ def password_reset_request():
                            user=user, token=token)
                 flash('An email with instructions to reset your password has been '
                       'sent to you.')
-                return redirect(url_for('login.index'))
+                return redirect(url_for('main.test'))
             except:
                 flash('Email sending fail')
-    return render_template('login/reset_password_request.html', form=form)
+    return render_template('./../../src/views/index.html', form=form)
 
 
 @login.route('/reset/<token>', methods=['GET', 'POST'])
@@ -81,14 +81,14 @@ def password_reset(token):
         user = User.query.filter_by(email=form.email.data).first()
         if user is None:
             flash('the email is not registered')
-            return redirect(url_for('login.index'))
+            return redirect(url_for('main.test'))
         if user.reset_password(token, form.password.data):
             flash('Your password has been updated.')
-            return redirect(url_for('login.index'))
+            return redirect(url_for('main.test'))
         else:
             flash('unsuccessful')
-            return redirect(url_for('login.index'))
-    return render_template('login/reset_password.html', form=form)
+            return redirect(url_for('main.test'))
+    return render_template('./../../src/view.index.html', form=form)
 
 
 @login.route('/change-password', methods=['GET', 'POST'])

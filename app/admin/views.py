@@ -87,8 +87,8 @@ def search_results(query):
                            query=query,
                            results=results)
 
-@admin.route('/admin/<user_id>', method=['GET','POST'])
-@admin.route('/admin/<user_id>/<page>', method=['GET','POST'])
+@admin.route('/admin/<user_id>', methods=['GET','POST'])
+@admin.route('/admin/<user_id>/<page>', methods=['GET','POST'])
 def show_one(user_id,page=1):
     articles = Article.query.filter_by(host_id=user_id).order_by(Article.time.desc())
     host = User.query.filter_by(id=g.user.id).first()

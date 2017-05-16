@@ -3,9 +3,9 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    weibo: './template/src/index.js',
-    Uweibo: './template/src/weibo.js',
-    Main:'./template/src/main.js'
+    weibo: './app/templates/src/index.js',
+    Uweibo: './app/templates/src/weibo.js',
+    Main:'./app/templates/src/main.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),

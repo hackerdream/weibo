@@ -3,8 +3,8 @@
 # encoding: utf-8
 
 from flask_script import Manager, Shell
-from app import create_app, db
 
+from app import create_app, db
 
 app = create_app()
 manager = Manager(app)
