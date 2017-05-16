@@ -21,6 +21,14 @@ weibo.get('/register',function (req, res) {
   res.render('register.html');
 })
 
+weibo.get('/u/:uid',function (req, res) {
+  res.render('weibo.html')
+})
+
+weibo.get('/main/:uid',function (req, res) {
+  res.render('main.html')
+})
+
 weibo.listen(8000, function (req, res) {
   console.log("http://localhost:8000");
 })
