@@ -154,6 +154,7 @@
     .nav-guild {
         margin-right: 10px;
         padding: 10px;
+        overflow: hidden;
 
     }
 
@@ -183,10 +184,12 @@
         position: relative;
         height: 40px;
         line-height: 40px;
+        overflow: hidden;
     }
 
     .nav-content a:hover {
         cursor: pointer;
+        overflow: hidden;
     }
 
     .nav-login a {

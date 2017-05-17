@@ -4,6 +4,7 @@ import Weibo from './components/index/weibo.vue'
 import WContent from './components/index/WContent.vue'
 import WArticle from './components/index/WArticle.vue'
 import UWeibo from './components/weibo/UWeibo.vue'
+import MWeibo from './components/main/MWeibo.vue'
 
 //Vue.config.debug = true;
 
@@ -21,6 +22,6 @@ const router = new VueRouter({
 new Vue({
   router,
   components:{
-    Weibo,WContent,UWeibo
+    Weibo,WContent,UWeibo,MWeibo
   }
 }).$mount('#app');

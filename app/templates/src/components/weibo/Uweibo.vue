@@ -2,7 +2,7 @@
 
     <div id="app">
 
-        <w-nav class="nav" @show-login="showLoginBox" :isLogin=true></w-nav>
+        <w-nav class="nav" :isLogin=true></w-nav>
 
         <div class=content>
             <u-content></u-content>
@@ -56,21 +56,4 @@
         overflow: hidden;
     }
 
-    .layer {
-        display: none;
-
-    }
-
-    .login-layer {
-        display: block;
-        position: absolute;
-        width: 600px;
-        height: 400px;
-        top: 50%;
-        left: 50%;
-        margin-left: -300px;
-        margin-top: -200px;
-        z-index: 999;
-        background: #ffffff;
-    }
 </style>
