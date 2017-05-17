@@ -17,6 +17,12 @@ class User(UserMixin, db.Model):
     avatar_hash = db.Column(db.String(32))
     confirmed = db.Column(db.Boolean, default=False)
     articles = db.relationship('Article', backref='host', lazy='dynamic')
+    followed_id = db.relationship('Follow',
+                                  Foreign_keys=[Follow.followed_id],
+                                  backref=db.backref('followed_id', lazy='joined'), lazy='dynamic')
+    follower_id = db.relationship('Follow',
+                                  Foreign_keys=[Follow.follower_id],
+                                  backref=db.backref('follower_id', lazy='joined'), lazy='dynamic')
 
     @property
     def password(self):
@@ -89,6 +95,12 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.name
 
+    def is_followed(self,user):
+        return  self.followed_id.filter_by(followed_id=User.id).first() is not None
+
+    def is_follower(self,user):
+        return  self.follower_id.filter_by(follower_id=User.id).first() is not None
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -102,6 +114,7 @@ class Article(db.Model):
     time = db.Column(db.DateTime, default=datetime.utcnow)
     up = db.Column(db.Integer, default = 0)
     comments = db.relationship('Comment', backref='article', lazy='dynamic')
+
 
     def __init__(self, **kwargs):
         super(Article, self).__init__(**kwargs)
@@ -137,9 +150,21 @@ class Follow(db.Model):
         else:
             db.session.add(self)
 
+    def get_followed(follows):
+        users = []
+        for follow in follows:
+            users.append(User.query.filter_by(User.id==follow.followed_id).first())
+        return users
+
+    def get_follower(follows):
+        users = []
+        for follow in follows:
+            users.append(User.query.filter_by(User.id==follow.follower_id).first())
+        return users
 
 def get_articles(follows):
     articles = []
     for follow in follows:
         articles.append(Article.query.filter_by(Article.host_id==follow.followed_id).first())
     return articles
+

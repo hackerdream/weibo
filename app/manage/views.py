@@ -9,6 +9,7 @@ from .. import db
 from . import manage
 import json
 from ..register.views import send_email
+from ..models import get_followed, get_follower
 
 @manage.route('/manage/add_article', methods=['GET', 'POST'])
 @login_required
@@ -54,7 +55,8 @@ def delete_article():
 @login_required
 def show_followed():
     follow = Follow.quert.filter(follower_id=g.current_user.id).all()
-    render_template('manage/show_followed.html', follow=follow)
+    users = get_followed(follow)
+    render_template('manage/show_followed.html', users=users)
 
 @manage.route('/manage/delete_followed', methods=['GET', 'POST'])
 @login_required
@@ -72,4 +74,5 @@ def delete_followed():
 @login_required
 def show_follower():
     follow = Follow.quert.filter(followed_id=g.current_user.id).all()
-    render_template('manage/show_follower.html', follow=follow)
+    users = get_follower(follow)
+    render_template('manage/show_follower.html', users=users)
