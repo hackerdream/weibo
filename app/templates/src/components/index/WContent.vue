@@ -57,7 +57,7 @@
                             <div class="sub-info-box">
                                 <a src="">
                                     <span class="info-face">
-                                        <img src="static./public/imgs/infoFace.jpg" width="20" height="20">
+                                         <img src="static/public/imgs/infoFace.jpg" width="20" height="20">
                                     </span>
                                 </a>
                                 <span style="font-size: 14px;float: left;line-height: 24px">
@@ -162,7 +162,7 @@
                                     </span>
                             </div>
                         </div>
-                    </li class="current-new">
+                    </li>
                 </ul>
             </div>
         </div>

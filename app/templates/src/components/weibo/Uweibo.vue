@@ -2,26 +2,22 @@
 
     <div id="app">
 
-        <w-nav class="nav" @show-login="showLoginBox"></w-nav>
+        <w-nav class="nav" @show-login="showLoginBox" :isLogin=true></w-nav>
 
-        <div class="layer">
-            <div style="position: fixed; top: 0; left: 0; width: 100%; height:100%; background: rgb(0, 0, 0); opacity: 0.3; z-index: 100;"></div>
-            <login-layer class="login-layer" @close-layer="close"></login-layer>
+        <div class=content>
+            <u-content></u-content>
         </div>
-
-        <router-view></router-view>
 
     </div>
 </template>
 
 <script>
-    import WNav from './components/Nav.vue'
-    import WContent from './components/Content.vue'
-    import LoginLayer from './components/LoginLayer.vue'
+    import WNav from '../Nav.vue'
+    import UContent from './UContent.vue'
 
     export default {
         components: {
-            WNav, WContent, LoginLayer
+            WNav, UContent
         },
         methods: {
             close(){
@@ -43,7 +39,7 @@
     #app {
         padding-top: 60px;
         overflow: hidden;
-        background: url(../public/imgs/body_bg2.jpg) no-repeat top center;
+        background: url(../../../../static/public/imgs/body_bg2.jpg) no-repeat top center;
         background-color: #1d0e2b;
     }
 
@@ -59,7 +55,6 @@
         background-color: #ffffff;
         overflow: hidden;
     }
-
 
     .layer {
         display: none;

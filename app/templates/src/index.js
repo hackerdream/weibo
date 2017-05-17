@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Weibo from './weibo.vue'
-import Content from './components/Content.vue'
-import Article from './components/Article.vue'
+import Weibo from './components/index/weibo.vue'
+import WContent from './components/index/WContent.vue'
+import WArticle from './components/index/WArticle.vue'
+import UWeibo from './components/weibo/UWeibo.vue'
 
 //Vue.config.debug = true;
 
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/', component: Content},
-  {path: '/home', component: Content},
-  {path: '/home/1111', component: Article}
+  {path: '/home', component:WContent},
+  {path: '/home/1111', component: WArticle}
 ];
 
 const router = new VueRouter({
@@ -20,5 +20,7 @@ const router = new VueRouter({
 
 new Vue({
   router,
-  render: h => h(Weibo)
+  components:{
+    Weibo,WContent,UWeibo
+  }
 }).$mount('#app');
