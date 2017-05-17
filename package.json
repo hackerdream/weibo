@@ -10,6 +10,7 @@
     "watch": "webpack --watch"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "vue": "^2.2.1",
     "vue-router": "^2.5.2"
   },
