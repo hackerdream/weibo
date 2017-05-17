@@ -4,15 +4,10 @@ var path = require('path');
 
 var weibo = express();
 
-<<<<<<< HEAD
 weibo.use('/app/templates/views', express.static('views'));
 weibo.use('/dist', express.static('dist'));
 weibo.use('/app/templates/public', express.static('public'));
-=======
-weibo.use('/app/template/views', express.static('public'));
-weibo.use('/dist', express.static('dist'));
-weibo.use('/app/template/public', express.static('public'));
->>>>>>> 0188621859fd820ed90df2693b69cb9b402ae495
+
 
 weibo.engine('html', ejs.__express);
 weibo.set('view engine', 'html');
