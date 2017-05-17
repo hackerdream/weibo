@@ -14,14 +14,14 @@
                                 </div>
                             </div>
                             <div class="pic-box">
-                                <img src="../../public/imgs/mt1.jpg">
-                                <img src="../../public/imgs/mt2.jpg">
-                                <img src="../../public/imgs/mt3.jpg">
+                                <img src="static/public/imgs/mt1.jpg">
+                                <img src="static/public/imgs/mt2.jpg">
+                                <img src="static/public/imgs/mt3.jpg">
                             </div>
                             <div class="sub-info-box">
                                 <a src="">
                                     <span class="info-face">
-                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                        <img src="static/public/imgs/infoFace.jpg" width="20" height="20">
                                     </span>
                                     <span style="font-size: 14px;float: left;line-height: 24px">
                                         @师生情
@@ -52,12 +52,12 @@
                                 </div>
                             </div>
                             <div class="pic-box">
-                                <img src="../../public/imgs/mt1.jpg">
+                                <img src="static/public/imgs/mt1.jpg">
                             </div>
                             <div class="sub-info-box">
                                 <a src="">
                                     <span class="info-face">
-                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                        <img src="static./public/imgs/infoFace.jpg" width="20" height="20">
                                     </span>
                                 </a>
                                 <span style="font-size: 14px;float: left;line-height: 24px">
@@ -83,7 +83,7 @@
             <div class="content-ad">
                 <div class="advertisement">
                     <a href="#">
-                        <img src="../../public/imgs/advertise.png" width="720" height="200">
+                        <img src="static/public/imgs/advertise.png" width="720" height="200">
                     </a>
                 </div>
             </div>
@@ -99,14 +99,14 @@
                                 </div>
                             </div>
                             <div class="pic-box">
-                                <img src="../../public/imgs/mt1.jpg">
-                                <img src="../../public/imgs/mt2.jpg">
-                                <img src="../../public/imgs/mt3.jpg">
+                                <img src="static/public/imgs/mt1.jpg">
+                                <img src="static/public/imgs/mt2.jpg">
+                                <img src="static/public/imgs/mt3.jpg">
                             </div>
                             <div class="sub-info-box">
                                 <a src="">
                                     <span class="info-face">
-                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                        <img src="static/public/imgs/infoFace.jpg" width="20" height="20">
                                     </span>
                                     <span style="font-size: 14px;float: left;line-height: 24px">
                                         @师生情
@@ -137,12 +137,12 @@
                                 </div>
                             </div>
                             <div class="pic-box">
-                                <img src="../../public/imgs/mt1.jpg">
+                                <img src="static/public/imgs/mt1.jpg">
                             </div>
                             <div class="sub-info-box">
                                 <a src="">
                                     <span class="info-face">
-                                        <img src="../../public/imgs/infoFace.jpg" width="20" height="20">
+                                        <img src="static/public/imgs/infoFace.jpg" width="20" height="20">
                                     </span>
                                 </a>
                                 <span style="font-size: 14px;float: left;line-height: 24px">

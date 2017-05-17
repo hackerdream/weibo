@@ -5,7 +5,7 @@
             <div class="article-item">
                 <div class="article-detail">
                     <router-link to="#" class="article-detail-img">
-                        <img src="../../public/imgs/infoFace.jpg" width="50" height="50">
+                        <img src="static/public/imgs/infoFace.jpg" width="50" height="50">
                     </router-link>
                     <div class="article-detail-info">
                         <div class="wb-info">
@@ -24,16 +24,16 @@
                         <div class="wb-img">
                             <ul class="wb-media">
                                 <li>
-                                    <img src="../../public/imgs/mt1.jpg">
+                                    <img src="static/public/imgs/mt1.jpg">
                                 </li>
                                 <li>
-                                    <img src="../../public/imgs/mt2.jpg">
+                                    <img src="static/public/imgs/mt2.jpg">
                                 </li>
                                 <li>
-                                    <img src="../../public/imgs/mt3.jpg">
+                                    <img src="static/public/imgs/mt3.jpg">
                                 </li>
                                 <li>
-                                    <img src="../../public/imgs/mt4.jpg">
+                                    <img src="static/public/imgs/mt4.jpg">
                                 </li>
                             </ul>
                         </div>
@@ -79,7 +79,7 @@
                     <div class="wb-feed-push">
                         <div class="wb-face">
                             <router-link to="">
-                                <img src="../../public/imgs/mt4.jpg" width="30" height="30">
+                                <img src="static/public/imgs/mt4.jpg" width="30" height="30">
                             </router-link>
                         </div>
                         <div class="wb-push">

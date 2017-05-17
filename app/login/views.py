@@ -29,7 +29,7 @@ import os
 def index(page=1):
     articles = Article.query.order_by(Article.time.desc())
     pagination = articles.paginate(page, 2, False)
-    return render_template('./../../src/views/index.html', page=page, pagination=pagination,
+    return render_template('src/views/index.html', page=page, pagination=pagination,
     articles=articles, endpoint='main.test')
 
 @login.route('/', methods=['GET', 'POST'])
@@ -41,7 +41,7 @@ def user_login():
             login_user(user)
             if not user.confirmed:
                 email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
-                return render_template('../templates/src/views/index.html', user=user, email_url=email_url)
+                return render_template('src/views/index.html', user=user, email_url=email_url)
             return redirect(url_for('index'))
         flash(u'检查一下是不是邮箱或者密码输错了')
     return render_template('src/views/index.html', form=form)

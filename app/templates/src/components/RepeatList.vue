@@ -4,7 +4,7 @@
         <ul class="repeat">
             <li class="repeat-list" v-for="item in face" :style="[Padding]">
                 <div style="float: left;" v-if="isFace" class="repeat-face">
-                    <img src="../../public/imgs/mt4.jpg" width="30" height="30">
+                    <img src="static/public/imgs/mt4.jpg" width="30" height="30">
                 </div>
                 <div class="repeat-info" :style="[MarginLeft]">
                     <router-link to="#">

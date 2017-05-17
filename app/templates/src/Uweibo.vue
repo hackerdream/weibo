@@ -16,7 +16,7 @@
     #weibo {
         padding-top: 60px;
         overflow: hidden;
-        background: url(../public/imgs/body_bg2.jpg) no-repeat top center;
+        background: url(../../../app/static/public/imgs/body_bg2.jpg) no-repeat top center;
         background-color: #1d0e2b;
     }
 

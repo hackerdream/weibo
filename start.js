@@ -4,13 +4,13 @@ var path = require('path');
 
 var weibo = express();
 
-weibo.use('/template/views', express.static('public'));
+weibo.use('/app/templates/views', express.static('views'));
 weibo.use('/dist', express.static('dist'));
-weibo.use('/template/public', express.static('public'));
+weibo.use('/app/templates/public', express.static('public'));
 
 weibo.engine('html', ejs.__express);
 weibo.set('view engine', 'html');
-weibo.set('views', __dirname + '/template/src/views');
+weibo.set('views', __dirname + '/templates/src/views');
 
 weibo.get('/', function (req, res) {
   res.render('index.html');

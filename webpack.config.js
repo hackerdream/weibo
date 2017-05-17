@@ -8,8 +8,8 @@ module.exports = {
     Main:'./app/templates/src/main.js'
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, 'app/static/dist'),
+    publicPath: '/static/dist/',
     filename: '[name].bundle.js'
   },
   module: {
