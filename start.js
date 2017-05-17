@@ -4,9 +4,9 @@ var path = require('path');
 
 var weibo = express();
 
-weibo.use('/template/views', express.static('public'));
+weibo.use('/app/template/views', express.static('public'));
 weibo.use('/dist', express.static('dist'));
-weibo.use('/template/public', express.static('public'));
+weibo.use('/app/template/public', express.static('public'));
 
 weibo.engine('html', ejs.__express);
 weibo.set('view engine', 'html');
