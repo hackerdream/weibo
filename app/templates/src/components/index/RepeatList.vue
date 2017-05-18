@@ -260,7 +260,7 @@
             },
             Color(){
                 return {
-                    'background-color': '#eaeaec',
+                    'background-color': '#eaeaec'
                 }
             },
             Padding(){

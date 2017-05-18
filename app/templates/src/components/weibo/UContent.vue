@@ -571,7 +571,7 @@
     }
 </style>
 <script>
-    import Repeat from '../RepeatList.vue'
+    import Repeat from './URepeatList.vue'
 
     export default{
         data(){
