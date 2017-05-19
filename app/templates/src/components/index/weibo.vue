@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import WNav from '../Nav.vue'
+    import WNav from '../weibo/WNav.vue'
     import WContent from './WContent.vue'
     import LoginLayer from './LoginLayer.vue'
 

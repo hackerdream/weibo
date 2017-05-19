@@ -1,27 +1,24 @@
 <template>
     <div class="m-content">
         <div class="content">
-            <div class="content-nav">
-                <router-link to="#" style="">主页</router-link>
-            </div>
 
             <div class="m-user">
                 <div class="left m-user-info" style=" padding:12px 0;">
                     <ul class="user-atten">
                         <li>
-                            <router-link to="#">
+                            <router-link to="/manager/111/follow">
                                 <strong>82</strong>
                                 <span>关注</span>
                             </router-link>
                         </li>
                         <li>
-                            <router-link to="#">
+                            <router-link to="/manager/111/fensi">
                                 <strong>72</strong>
                                 <span>粉丝</span>
                             </router-link>
                         </li>
                         <li>
-                            <router-link to="#">
+                            <router-link to="/">
                                 <strong>5</strong>
                                 <span>微博</span>
                             </router-link>
@@ -120,8 +117,8 @@
                 </div>
 
             </div>
-
         </div>
+    <router-view></router-view>
     </div>
 </template>
 <style scoped>
@@ -153,14 +150,6 @@
         margin: 0 auto;
     }
 
-    .content-nav {
-        width: 100%;
-        text-align: center;
-        background-color: #261d3b;
-        height: 40px;
-        line-height: 40px;
-        color: #fff
-    }
     @media screen and (max-width:1000px) {
         .m-content .m-user-info{
             display: none;
@@ -241,7 +230,6 @@
     .article-item {
         display: block;
         width: 100%;
-        min-height: 420px;
         overflow: hidden;
         background-color: #261d3b;
     }

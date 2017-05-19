@@ -6,9 +6,7 @@
         <div class="">
             <m-head></m-head>
         </div>
-        <div>
-            <m-content></m-content>
-        </div>
+
     </div>
 </template>
 <style scoped>
@@ -40,9 +38,9 @@
 
 </style>
 <script>
-    import MNav from '../Nav.vue'
-    import MContent from '../main/MContent.vue'
-    import MHead from '../main/MHead.vue'
+    import MNav from '../weibo/WNav.vue'
+    import MContent from './MContent.vue'
+    import MHead from './MHead.vue'
 
     export default{
         components: {
