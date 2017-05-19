@@ -2,7 +2,7 @@
     <div class="w-login">
         <div>
             <a class="close-layer" @click="closeLayer">
-                <em>X</em>
+                <em class="fa fa-times" aria-hidden="true"></em>
             </a>
         </div>
         <div class="login-info">
