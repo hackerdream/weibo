@@ -38,7 +38,7 @@
 
 </style>
 <script>
-    import MNav from '../weibo/WNav.vue'
+    import MNav from '../weibo/UNav.vue'
     import MContent from './MContent.vue'
     import MHead from './MHead.vue'
 

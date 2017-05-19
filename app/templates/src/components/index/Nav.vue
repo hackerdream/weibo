@@ -15,7 +15,7 @@
                 <div class="nav-content left">
                     <ul>
                         <li>
-                            <router-link to="/home" class="left">
+                            <router-link to="/" class="left">
                                 <em class="fa fa-home fa-2x left"></em>
                                 <em>首页</em>
                             </router-link>
@@ -94,7 +94,7 @@
 
     @media only screen and (-webkit-min-device-pixel-ratio: 2), not all, not all, not all {
         .logo-box .logo-bg {
-            background-image: url(../../../static/public/imgs/WB_logo-x2.png);
+            background-image: url(../../../../static/public/imgs/WB_logo-x2.png);
             background-size: 60px 20px;
         }
     }
@@ -104,7 +104,7 @@
         width: 80px;
         height: 48px;
         cursor: pointer;
-        background: url(../../../static/public/imgs/WB_logo-x2.png) no-repeat 0 40%;
+        background: url(../../../../static/public/imgs/WB_logo-x2.png) no-repeat 0 40%;
         background-size: 80px 30px;
     }
 

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import WNav from './WNav.vue'
+    import WNav from './UNav.vue'
     import UContent from './UContent.vue'
 
     export default {

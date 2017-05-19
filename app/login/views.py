@@ -30,7 +30,7 @@ def index(page=1):
     articles = Article.query.order_by(Article.time.desc())
     pagination = articles.paginate(page, 2, False)
     return render_template('src/views/index.html', page=page, pagination=pagination,
-    articles=articles, endpoint='main.test')
+    articles=articles, endpoint='index.test')
 
 @login.route('/', methods=['GET', 'POST'])
 def user_login():
@@ -44,7 +44,7 @@ def user_login():
                 return render_template('src/views/index.html', user=user, email_url=email_url)
             return redirect(url_for('index'))
         flash(u'检查一下是不是邮箱或者密码输错了')
-    return render_template('src/views/main.html', form=form)
+    return render_template('src/views/index.html', form=form)
 
 
 @login.route('/logout')
