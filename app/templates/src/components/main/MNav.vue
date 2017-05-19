@@ -325,7 +325,7 @@
                 document.getElementsByClassName('gn-topmenulist')[0].style.display = "block";
             },
             hideItem() {
-                setTimeout("document.getElementsByClassName('gn-topmenulist')[0].style.display = \"none\";", 1000);
+                setTimeout("document.getElementsByClassName('gn-topmenulist')[0].style.display = \"none\";", 1200);
             }
         }
     }

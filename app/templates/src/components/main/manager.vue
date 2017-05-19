@@ -85,6 +85,7 @@
         height: 40px;
         padding: 5px 10px;
         font-size: 16px;
+        border-radius: 3px;
 
     }
 
@@ -125,9 +126,9 @@
                         content: "最帅的人"
                     },
                     {
-                        name: "手机号",
+                        name: "地址",
                         edit: false,
-                        content: 123456
+                        content: "电子科技大学2006号"
                     },
                     {
                         name: "邮箱",
