@@ -6,9 +6,7 @@
         <div class="">
             <m-head></m-head>
         </div>
-        <div>
-            <m-content></m-content>
-        </div>
+
     </div>
 </template>
 <style scoped>
@@ -34,15 +32,14 @@
         border-bottom: 1px solid #cacaca;
         z-index: 99;
         background-color: #ffffff;
-        overflow: hidden;
     }
 
 
 </style>
 <script>
-    import MNav from '../Nav.vue'
-    import MContent from '../main/MContent.vue'
-    import MHead from '../main/MHead.vue'
+    import MNav from './MNav.vue'
+    import MContent from './MContent.vue'
+    import MHead from './MHead.vue'
 
     export default{
         components: {

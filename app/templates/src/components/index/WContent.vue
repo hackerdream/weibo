@@ -4,22 +4,23 @@
         <div class="content">
             <div class="current-news">
                 <ul>
-                    <router-link to="/home/1111" :class="[{morePicture:true,onePicture:false}]" class="current-new">
-                        <div class="pic-tex">
-                            <div class="tex-box">
-                                <div class="text">
-                                    这里是内容你信吗，反正我信了今天是我們倆結婚五週年的日子，老公一早就跟我說了一聲Happy anniversary，
-                                    原本以為今年就在月子中心簡單的過，就像過去的每一天一樣，沒想到你們解孵特地去買了我好久沒吃的杯子蛋糕和
-                                    花給我驚喜而且今年的花多了一種-康乃馨️真的很特別，謝謝老公那麽有心，總是花心思給我驚喜️愛你，五週年快樂
+                    <li>
+                        <router-link to="/home/111" :class="[{morePicture:true,onePicture:false}]" class="current-new">
+                            <div class="pic-tex">
+                                <div class="tex-box">
+                                    <div class="text">
+                                        这里是内容你信吗，反正我信了今天是我們倆結婚五週年的日子，老公一早就跟我說了一聲Happy anniversary，
+                                        原本以為今年就在月子中心簡單的過，就像過去的每一天一樣，沒想到你們解孵特地去買了我好久沒吃的杯子蛋糕和
+                                        花給我驚喜而且今年的花多了一種-康乃馨️真的很特別，謝謝老公那麽有心，總是花心思給我驚喜️愛你，五週年快樂
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="pic-box">
-                                <img src="static/public/imgs/mt1.jpg">
-                                <img src="static/public/imgs/mt2.jpg">
-                                <img src="static/public/imgs/mt3.jpg">
-                            </div>
-                            <div class="sub-info-box">
-                                <a src="">
+                                <div class="pic-box">
+                                    <img src="static/public/imgs/mt1.jpg">
+                                    <img src="static/public/imgs/mt2.jpg">
+                                    <img src="static/public/imgs/mt3.jpg">
+                                </div>
+                                <div class="sub-info-box">
+                                    <a src="">
                                     <span class="info-face">
                                         <img src="static/public/imgs/infoFace.jpg" width="20" height="20">
                                     </span>
@@ -33,15 +34,16 @@
                                         <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                         <em>20</em>
                                     </span>
-                                    <span class="right-line"></span>
+                                        <span class="right-line"></span>
                                     <span class="info-upvote">
                                         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                                         <em>30</em>
                                     </span>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </router-link>
+                        </router-link>
+                    </li>
                     <li class="current-new" :class="[{morePicture:false,onePicture:true}]">
                         <div class="pic-tex">
                             <div class="tex-box">
@@ -198,7 +200,6 @@
                 <span>Copyright © 2017 weibo 信安三班某组</span>
             </p>
         </footer>
-
         <router-view></router-view>
     </div>
 
@@ -210,7 +211,7 @@
         cursor: pointer;
     }
 
-    .text{
+    .text {
         color: black;
     }
 
@@ -568,6 +569,14 @@
         overflow: hidden;
         margin: 10px 0 0 0;
         font-size: 18px;
+    }
+
+    .sub-info-box {
+        color: #808080;
+    }
+
+    .sub-info-box span:hover{
+        color: #eb7350;
     }
 
     .user-atten li:last-child {

@@ -35,11 +35,33 @@
                         <em class="fa fa-user-o" aria-hidden="true"></em>
                         <em>我是帅哥</em>
                     </router-link>
+                    <div class="user-manager">
+                        <a class="user-manager-box" @mouseenter="showItem()"
+                           @mouseleave="hideItem()">
+                            <em class="fa fa-cog" aria-hidden="true"></em>
+                            <em>管理</em>
+                        </a>
+                        <div class="gn-topmenulist">
+                            <!--data start-->
+                            <ul>
+                                <li>
+                                    <router-link to="/manager/111">帐号设置</router-link>
+                                </li>
+                                <li>
+                                    <a>退出</a>
+                                </li>
+                            </ul>
+                            <div class="W_layer_arrow">
+                                <span class="W_arrow_bor W_arrow_bor_t">
+                                    <i class="S_line3"></i>
+                                    <em class="S_bg2_br"></em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <router-view></router-view>
-
     </div>
 
 </template>
@@ -54,6 +76,10 @@
         font-style: normal
     }
 
+    ul li {
+        list-style: none;
+    }
+
     .left {
         float: left;
     }
@@ -66,7 +92,6 @@
         display: block;
         position: relative;
         width: 90%;
-        padding: 0 40px;
         margin: 0 auto;
     }
 
@@ -94,7 +119,7 @@
 
     @media only screen and (-webkit-min-device-pixel-ratio: 2), not all, not all, not all {
         .logo-box .logo-bg {
-            background-image: url(../../../static/public/imgs/WB_logo-x2.png);
+            background-image: url(../../../../static/public/imgs/WB_logo-x2.png);
             background-size: 60px 20px;
         }
     }
@@ -104,7 +129,7 @@
         width: 80px;
         height: 48px;
         cursor: pointer;
-        background: url(../../../static/public/imgs/WB_logo-x2.png) no-repeat 0 40%;
+        background: url(../../../../static/public/imgs/WB_logo-x2.png) no-repeat 0 40%;
         background-size: 80px 30px;
     }
 
@@ -154,13 +179,12 @@
     .nav-guild {
         margin-right: 10px;
         padding: 10px;
-        overflow: hidden;
 
     }
 
     .nav-guild .nav-content {
         display: block;
-        width: 320px;
+        width: 200px;
         height: 40px;
         line-height: 40px;
         color: #696e78;
@@ -179,20 +203,21 @@
         line-height: 40px;
     }
 
-    .nav-guild .nav-login {
+    .nav-login a {
         display: block;
         position: relative;
+        width: 240px;
         height: 40px;
         line-height: 40px;
-        overflow: hidden;
     }
 
     .nav-content a:hover {
         cursor: pointer;
-        overflow: hidden;
     }
 
-    .nav-login a {
+    .nav-login a:first-child {
+        display: inline-block;
+        width: 90px;
         padding: 0 10px;
     }
 
@@ -208,9 +233,83 @@
         line-height: 40px;
     }
 
+    .user-manager {
+        display: inline-block;
+        width: 100px;
+        height: 30px
+    }
+
+    .nav .user-manager a {
+        padding: 0 4px;
+    }
+
+    .gn-topmenulist {
+        position: absolute;
+        display: none;
+        background: #fff;
+        width: 84px;
+        top: 60px;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        padding: 2px;
+        box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    .nav .user-manager .nav-login .gn_topmenulist ul li {
+        position: static;
+        width: 64px;
+        float: none;
+        margin: 0;
+        padding: 0;
+        display: inline;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .W_arrow_bor {
+        display: block;
+        position: relative;
+    }
+
+    .W_arrow_bor_t i, .W_arrow_bor_t em {
+        _border-style: dashed dashed solid dashed;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+    }
+
+    .S_line3 {
+        border-color: #ccc;
+        position: absolute;
+        top: -99px;
+        right: 35px;
+    }
+
+    .S_bg2_br {
+        position: absolute;
+        top: -97px;
+        right: 35px;
+        color: #fff;
+        border-color: #fff;
+    }
+
+    .W_arrow_bor i, .W_arrow_bor em {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-width: 7px;
+        border-style: solid;
+        overflow: hidden;
+        font-size: 0;
+        line-height: 0;
+        vertical-align: top;
+    }
 
 </style>
 <script>
+
+
     export default{
         props: {
             isLogin: {
@@ -221,6 +320,12 @@
         methods: {
             showLogin(){
                 this.$emit('show-login')
+            },
+            showItem() {
+                document.getElementsByClassName('gn-topmenulist')[0].style.display = "block";
+            },
+            hideItem() {
+                setTimeout("document.getElementsByClassName('gn-topmenulist')[0].style.display = \"none\";", 1200);
             }
         }
     }

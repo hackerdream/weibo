@@ -50,7 +50,7 @@ def user_register():
         except:
             flash('Email sending failed and the  email is wrong')
             return render_template('login/unconfirmed.html', user=user, email_url=email_url)
-    return render_template('register/user_register.html', form=form)
+    return render_template('src/views/register.html', form=form)
 
 
 @register.route('/confirm/<token>')

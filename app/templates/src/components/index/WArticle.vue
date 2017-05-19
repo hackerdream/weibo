@@ -351,7 +351,7 @@
 
 </style>
 <script>
-    import Repeat from '../RepeatList.vue'
+    import Repeat from './RepeatList.vue'
 
     export default{
         data(){
