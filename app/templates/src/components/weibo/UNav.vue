@@ -15,7 +15,7 @@
                 <div class="nav-content left">
                     <ul>
                         <li>
-                            <router-link to="/home" class="left">
+                            <router-link to="/" class="left">
                                 <em class="fa fa-home fa-2x left"></em>
                                 <em>首页</em>
                             </router-link>

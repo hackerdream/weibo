@@ -2,22 +2,19 @@
 
     <div id="app">
 
-        <w-nav class="nav" :isLogin=true></w-nav>
+        <u-nav class="nav" :isLogin=true></u-nav>
 
-        <div class=content>
-            <u-content></u-content>
-        </div>
-
+    <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import WNav from './UNav.vue'
+    import UNav from './UNav.vue'
     import UContent from './UContent.vue'
 
     export default {
         components: {
-            WNav, UContent
+            UNav, UContent
         },
         methods: {
             close(){

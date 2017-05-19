@@ -9,7 +9,9 @@
                 </textarea>
                 <div class="article-edit-bar">
                     <div class="article-img-push">
-                        <img alt="图片" width="40" height="30">
+                        <a><i class="fa fa-picture-o" style="color:#84c002;" aria-hidden="true"></i>
+                        <em style="color:#918ea5">图片</em></a>
+
                     </div>
                     <div class="article-push">
                         <a>
@@ -28,10 +30,6 @@
                         <div class="article-detail-info">
                             <div class="wb-info">
                                 <router-link to="#" class="wb-info-name">中国知青青年</router-link>
-                                <a class="wb-mark">
-                                    <em class="fa fa-plus" aria-hidden="true"></em>
-                                    <span>加关注</span>
-                                </a>
                             </div>
                             <div class="wb-time">
                                 5月11日 07:10 来自 iPhone 6s Plus
@@ -210,7 +208,7 @@
         padding: 20px 20px;
         margin-top: 10px;
         outline-style: none;
-        background-color: #fff;
+        background-color: #261d3b;
     }
 
     .edit-box {
@@ -234,7 +232,7 @@
     .article-img-push {
         display: block;
         float: left;
-        width: 40px;
+        width: 100px;
         height: 30px;
     }
 
@@ -264,7 +262,7 @@
         display: block;
         width: 720px;
         margin: 10px auto 0;
-        border: 1px solid #ccc;
+        border: 1px solid #261d3b;
         font-size: 13px;
         overflow: hidden;
     }
@@ -274,7 +272,7 @@
         width: 100%;
         min-height: 420px;
         overflow: hidden;
-        background-color: #fff;
+        background-color: #261d3b;
     }
 
     .article-item + .article-item {
@@ -285,6 +283,7 @@
         display: block;
         width: 680px;
         padding: 20px 20px;
+        background-color: #261d3b;
     }
 
     .article-detail-img {
@@ -384,8 +383,8 @@
         display: block;
         width: 100%;
         height: 40px;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #3e355b;
+        border-bottom: 1px solid #3e355b;
         margin-left: -1px;
     }
 
@@ -403,14 +402,14 @@
         border-left-width: 1px;
         border-left-style: solid;
         line-height: 22px;
-        border-color: #ccc;
+        border-color: #3e355b;
     }
 
     .article-feed-repeat {
         display: block;
         width: 100%;
         padding: 16px 0 6px;
-        background-color: #f2f2f5;
+        background-color: #1d1531;
     }
 
     .wb-feed-push {

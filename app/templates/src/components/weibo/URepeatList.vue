@@ -44,12 +44,12 @@
                     </div>
                 </div>
 
-                <urepeat-list v-if="item.children"
+                <mrepeat-list v-if="item.children"
                              :face="item.children"
                              :improveCount="count"
                              :style="[Box,ChildrenWidth,Color]"
                              :isFace='false'>
-                </urepeat-list>
+                </mrepeat-list>
             </li>
         </ul>
 
@@ -178,7 +178,7 @@
 
     .re-repeat-detail {
         position: relative;
-        width: 95%;
+        width: 96%;
         padding: 16px 16px;
         background-color: #2e2950;
     }
@@ -215,7 +215,7 @@
 <script>
 
     export default{
-        name: "urepeat-list",
+        name: "mrepeat-list",
         props: {
             face: {
                 type: [Array, Object, Number]
@@ -267,7 +267,7 @@
                 return {
                     'padding-top': 20 - this.improveCount * 20 + 'px',
                     'margin-top': this.improveCount * 10 + 'px',
-                    'border-bottom': this.improveCount+'px solid #d9d9d9'
+                    'border-bottom': this.improveCount+'px solid #3e355b'
                 }
 
 
