@@ -18,10 +18,8 @@ class User(UserMixin, db.Model):
     confirmed = db.Column(db.Boolean, default=False)
     articles = db.relationship('Article', backref='host', lazy='dynamic')
     followed_id = db.relationship('Follow',
-                                  Foreign_keys=[Follow.followed_id],
                                   backref=db.backref('followed_id', lazy='joined'), lazy='dynamic')
     follower_id = db.relationship('Follow',
-                                  Foreign_keys=[Follow.follower_id],
                                   backref=db.backref('follower_id', lazy='joined'), lazy='dynamic')
 
     @property
@@ -96,10 +94,10 @@ class User(UserMixin, db.Model):
         return '<User %r>' % self.name
 
     def is_followed(self,user):
-        return  self.followed_id.filter_by(followed_id=User.id).first() is not None
+        return self.followed_id.filter_by(followed_id=User.id).first() is not None
 
     def is_follower(self,user):
-        return  self.follower_id.filter_by(follower_id=User.id).first() is not None
+        return self.follower_id.filter_by(follower_id=User.id).first() is not None
 
 
 @login_manager.user_loader
@@ -109,12 +107,12 @@ def load_user(user_id):
 
 class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    host_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    host_id = db.Column(db.Integer, db.ForeignKey('User.id'))
     text = db.Column(db.Text(140))
     time = db.Column(db.DateTime, default=datetime.utcnow)
     up = db.Column(db.Integer, default = 0)
     comments = db.relationship('Comment', backref='article', lazy='dynamic')
-
+    photos = db.relationship('Photo', backref='article', lazy='dynamic')
 
     def __init__(self, **kwargs):
         super(Article, self).__init__(**kwargs)
@@ -122,6 +120,12 @@ class Article(db.Model):
     def new_up(db):
         key = Article.query.first()
         key.up += 1
+
+
+class Photo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(128))
+    Article_id = db.Column(db.Integer, db.ForeignKey('article.id'))
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -134,6 +138,7 @@ class Comment(db.Model):
 
     def __init__(self, **kwargs):
         super(Comment, self).__init__(**kwargs)
+
 
 class Follow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -167,4 +172,3 @@ def get_articles(follows):
     for follow in follows:
         articles.append(Article.query.filter_by(Article.host_id==follow.followed_id).first())
     return articles
-

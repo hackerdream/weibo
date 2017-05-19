@@ -3,9 +3,8 @@
 # encoding: utf-8
 
 import os
-
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+from flask_uploads import IMAGES
 
 class Config:
     def __init__(self):
@@ -34,6 +33,10 @@ class Config:
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
     POSTS_PER_PAGE = 10
+
+    UPLOAD_PHOTOS_DEST = './static/public/imgs'
+    UPLOAD_PHOTOS_ALLOW = IMAGES
+
 
     @staticmethod
     def init_app(app):

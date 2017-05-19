@@ -23,15 +23,23 @@
                     </ul>
                 </div>
 
-                <div class="nav-login left" >
+                <div class="nav-login left" v-if="!isLogin">
                     <a href="#" class="left" @click="showLogin">登录</a>
                     <div class="block left">|</div>
                     <a class="left" href="/register">注册</a>
                 </div>
 
+
+                <div class="nav-login left" v-if="isLogin">
+                    <router-link to="#">
+                        <em class="fa fa-user-o" aria-hidden="true"></em>
+                        <em>我是帅哥</em>
+                    </router-link>
+                </div>
             </div>
         </div>
         <router-view></router-view>
+
     </div>
 
 </template>
@@ -146,6 +154,7 @@
     .nav-guild {
         margin-right: 10px;
         padding: 10px;
+        overflow: hidden;
 
     }
 
@@ -175,10 +184,12 @@
         position: relative;
         height: 40px;
         line-height: 40px;
+        overflow: hidden;
     }
 
     .nav-content a:hover {
         cursor: pointer;
+        overflow: hidden;
     }
 
     .nav-login a {

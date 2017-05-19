@@ -44,7 +44,7 @@ def user_login():
                 return render_template('src/views/index.html', user=user, email_url=email_url)
             return redirect(url_for('index'))
         flash(u'检查一下是不是邮箱或者密码输错了')
-    return render_template('src/views/index.html', form=form)
+    return render_template('src/views/main.html', form=form)
 
 
 @login.route('/logout')

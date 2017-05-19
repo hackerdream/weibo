@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div>main page</div>
+        <div>
+
+        </div>
     </div>
 </template>
 <style>
