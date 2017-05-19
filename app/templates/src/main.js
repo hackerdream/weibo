@@ -4,14 +4,17 @@ import MWeibo from './components/main/MWeibo.vue'
 import MContent from './components/main/MContent.vue'
 import Follow from './components/main/Follow.vue'
 import Fensi from './components/main/Fensi.vue'
+import Manage from './components/main/Manager.vue'
 //Vue.config.debug = true;
 
 Vue.use(VueRouter);
 
 const routes = [
     {path: '/', component: MContent},
+    {path: '/home',component:MContent},
     {path: '/manager/111/follow', component: Follow},
-    {path: '/manager/111/fensi', component: Fensi}
+    {path: '/manager/111/fensi', component: Fensi},
+    {path: '/manager/111',component:Manage}
 
 ];
 

@@ -32,13 +32,12 @@
         border-bottom: 1px solid #cacaca;
         z-index: 99;
         background-color: #ffffff;
-        overflow: hidden;
     }
 
 
 </style>
 <script>
-    import MNav from '../weibo/UNav.vue'
+    import MNav from './MNav.vue'
     import MContent from './MContent.vue'
     import MHead from './MHead.vue'
 

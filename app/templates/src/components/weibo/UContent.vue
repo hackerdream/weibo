@@ -158,7 +158,7 @@
 
     a {
         cursor: pointer;
-        color: #2e2e2e;
+        color: #918ea5;
         text-decoration: none;
     }
 

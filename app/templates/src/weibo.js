@@ -9,14 +9,16 @@ import WContent from './components/weibo/UContent.vue'
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/',component:WContent}
+    {path: '/', component: WContent}
 ];
 
 const router = new VueRouter({
-  routes
+    routes,
+    hashbang: false,
+    history: true
 });
 
 new Vue({
-  router,
-  render:h=>h(UWeibo)
+    router,
+    render: h=>h(UWeibo)
 }).$mount('#app');
