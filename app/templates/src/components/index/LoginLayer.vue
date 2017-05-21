@@ -41,7 +41,8 @@
         float: right;
         margin-right: 10px;
     }
-    .close-layer:hover{
+
+    .close-layer:hover {
         cursor: pointer;
     }
 
@@ -126,7 +127,7 @@
 </style>
 <script>
     export default{
-        methods:{
+        methods: {
             closeLayer(){
                 this.$emit('close-layer');
             }

@@ -10,15 +10,16 @@ import WArticle from './components/index/WArticle.vue'
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/',component:WContent},
-  {path: '/home/111', component: WArticle}
+    {path: '/', component: WContent},
+    {path: '/home/111', component: WArticle}
 ];
 
 const router = new VueRouter({
-  routes
+    routes,
+    mode: history
 });
 
 new Vue({
-  router,
-  render:h=>h(Weibo)
+    router,
+    render: h=>h(Weibo)
 }).$mount('#app');

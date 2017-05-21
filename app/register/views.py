@@ -39,17 +39,17 @@ def user_register():
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        login_user(user)
-        email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
-        token = user.generate_confirmation_token()
-        try:
-            send_email(user.email, 'Confirm Your Account',
-                       'register/email/confirm', user=user, token=token)
-            flash('A confirmation email has been sent to you by email.')
-            return render_template('login/unconfirmed.html', user=user, email_url=email_url)
-        except:
-            flash('Email sending failed and the  email is wrong')
-            return render_template('login/unconfirmed.html', user=user, email_url=email_url)
+        return render_template('src/views/weibo.html',user=user)
+        # email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
+        # token = user.generate_confirmation_token()
+        # try:
+        #     send_email(user.email, 'Confirm Your Account',
+        #                'register/email/confirm', user=user, token=token)
+        #     flash('A confirmation email has been sent to you by email.')
+        #     return render_template('login/unconfirmed.html', user=user, email_url=email_url)
+        # except:
+        #     flash('Email sending failed and the  email is wrong')
+        #     return render_template('login/unconfirmed.html', user=user, email_url=email_url)
     return render_template('src/views/register.html', form=form)
 
 
