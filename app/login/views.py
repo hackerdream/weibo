@@ -42,7 +42,7 @@ def user_login():
             # if not user.confirmed:
             #     email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
             #     return render_template('src/views/index.html', user=user, email_url=email_url)
-            return redirect(url_for('admin.homepage'))
+            return render_template('src/views/weibo.html')
         flash(u'检查一下是不是邮箱或者密码输错了')
     return render_template('src/views/index.html', form=form)
 

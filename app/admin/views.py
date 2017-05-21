@@ -11,17 +11,16 @@ from .. import db
 def before_request():
   g.user = current_user
 
-@admin.route('/admin', methods=['GET', 'POST'])
-@admin.route('/admin/homepage', methods=['GET', 'POST'])
-@admin.route('/admin/homepage/<int:page>', methods=['GET', 'POST'])
+
+@admin.route('/weibo', methods=['GET', 'POST'])
 @login_required
-def homepage(page=1):
+def homepage():
     follows = Follow.query.filter_by(follower_id=g.user.id)
     host = User.query.filter_by(id=g.user.id).first()
-    pagination = follows.paginate(page, 2, False)
-    articles = get_articles(pagination.items)
-    return render_template('admin/homepage.html', articles=articles, host=host,
-                            pagination=pagination,endpoint='admin.homepage', page=page)
+    articles = get_articles(follows)
+    return render_template('src/views/weibo.html', articles=articles, host=host,
+                            endpoint='admin.homepage')
+
 
 @admin.route('/admin/article_details/<article_id>', methods=['GET', 'POST'])
 @login_required

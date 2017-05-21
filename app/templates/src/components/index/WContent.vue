@@ -173,8 +173,8 @@
             <div class="login">
                 <h1>账号登录</h1>
                 <div class="login-box">
-                    <input type="text" placeholder="请输入用户名">
-                    <input type="password" placeholder="请输入密码">
+                    <input type="text" name="email" placeholder="请输入用户名" v-model="email">
+                    <input type="password" name="password" placeholder="请输入密码" v-model="password">
                 </div>
                 <footer>
                     <div class="login-msg">
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     <div class="clearFLoat"></div>
-                    <a class="login-weibo">
+                    <a class="login-weibo"  @click="login()">
                         <span>登录</span>
                     </a>
                 </footer>
@@ -575,7 +575,7 @@
         color: #808080;
     }
 
-    .sub-info-box span:hover{
+    .sub-info-box span:hover {
         color: #eb7350;
     }
 
@@ -595,7 +595,24 @@
         data(){
             return {
                 moreThreePicture: true,
-                lessThreePicture: false
+                lessThreePicture: false,
+                email: '',
+                password: ''
+
+            }
+        },
+        methods: {
+            login()
+            {
+                console.log("hello");
+                this.$axios.post('/user_login', {
+                    email: this.email,
+                    password: this.password
+                }).then(function (res) {
+                    window.location.href = '/weibo';
+                }).catch(function (err) {
+                    console.log(err);
+                })
             }
         }
     }
