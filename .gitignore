@@ -13,3 +13,4 @@ app/admin/forms.pyc
 app/login/forms.pyc
 app/register/forms.pyc
 app/manage/forms.pyc
+data.sqlite
