@@ -46,7 +46,6 @@ def user_register():
     # db.session.commit()
     print form.password.data
     if form.validate_on_submit():
-        print 'aaa'
         user = User(name=form.name.data,
                     email=form.email.data,
                     password=form.password.data)
