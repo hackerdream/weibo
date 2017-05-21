@@ -12,6 +12,8 @@ from threading import Thread
 from flask_mail import Message
 from app import mail
 from flask_login import login_user
+from flask_wtf.csrf import CsrfProtect
+from .. import SQLAlchemy
 
 
 def send_async_email(app, msg):
@@ -30,16 +32,26 @@ def send_email(to, subject, template, **kwargs):
     return thr
 
 
+csrf = CsrfProtect(current_app)
+
+
+@csrf.exempt
 @register.route('/user_register', methods=['GET', 'POST'])
 def user_register():
     form = RegistrationForm()
+    # a = User(name="aaa",
+    #          email="aaa",
+    #          password="aaa")
+    # db.session.add(a)
+    # db.session.commit()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
-                    name=form.name.data,
+        user = User(name=form.name.data,
+                    email=form.email.data,
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        return render_template('src/views/weibo.html',user=user)
+        login_user(user)
+        return render_template('src/views/weibo.html')
         # email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
         # token = user.generate_confirmation_token()
         # try:
@@ -50,6 +62,7 @@ def user_register():
         # except:
         #     flash('Email sending failed and the  email is wrong')
         #     return render_template('login/unconfirmed.html', user=user, email_url=email_url)
+        #     return render_template('src/view/main.html', user=user, email_url=email_url)
     return render_template('src/views/register.html', form=form)
 
 
@@ -64,10 +77,7 @@ def confirm(token):
     else:
         flash('The confirmation link is invalid or has expired.')
         return redirect(url_for('register.resend_confirmation'))
-    if current_user.identity == 'par':
-        return redirect(url_for('participant.homepage'))
-    else:
-        return redirect(url_for('hosts.index'))
+    return redirect(url_for('admin.homepage'))
 
 
 @register.route('/confirm')

@@ -90,7 +90,7 @@
 </head>
 <body style=" background-color: #d4d5e0;background-image: url(static/public/imgs/body_bg.jpg);background-repeat: repeat-x;background-position: center 0;">
 <div id="register">
-    <div class="register-box" method="POST">
+    <form class="register-box" method="POST" action="{{url_for('register.user_register')}}">
         <div class="register-info">
             <span>用户注册</span>
         </div>
@@ -102,15 +102,14 @@
         </div>
 
         <div id="error-msg">
-
         </div>
         <div class="submit-register">
             <a onclick="judgePassword()">
                 <span>注册</span>
             </a>
         </div>
-
-    </div>
+    <input type="submit" value="提交">
+    </form>
 </div>
 
 <script type="text/javascript" src="static/public/js/axios.min.js"></script>

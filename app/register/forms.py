@@ -15,13 +15,13 @@ class RegistrationForm(Form):
         Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0, message=u'必须由1到64位以字母开头的数字和字母组成')])
     password = PasswordField('Password', validators=[
         DataRequired(message=u'密码都不填怎么行'), EqualTo('password2', message=u'密码不一致')])
-    password2 = PasswordField('Confirm password', validators=[DataRequired(message=u'这里必须填哦')])
+    #password2 = PasswordField('Confirm password', validators=[DataRequired(message=u'这里必须填哦')])
 
 
-    def validate_email(self, field):
-        if User.query.filter_by(email=field.data).first():
-            raise ValidationError(u'该邮箱已经注册')
-
-    def validate_name(self, field):
-        if User.query.filter_by(name=field.data).first():
-            raise ValidationError(u'该用户名已存在')
+    # def validate_email(self, field):
+    #     if User.query.filter_by(email=field.data).first():
+    #         raise ValidationError(u'该邮箱已经注册')
+    #
+    # def validate_name(self, field):
+    #     if User.query.filter_by(name=field.data).first():
+    #         raise ValidationError(u'该用户名已存在')

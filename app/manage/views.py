@@ -2,11 +2,12 @@
 # encoding: utf-8
 
 from .forms import *
-from ..models import Article,Comment, User, Follow
+from ..models import Article,Comment, User, Follow, Photo
 from flask import flash, redirect, url_for, request, render_template, g, current_app
 from flask_login import login_required, current_user
 from .. import db
 from . import manage
+
 import json
 from ..register.views import send_email
 
@@ -17,8 +18,14 @@ def add_article():
     method = 'add'
     if form.validate_on_submit():
         text = form.text.data
+        filename = photos.save(form.photo.data)
+        file_url = photos.url(filename)
         article = Article(text=text, host_id=current_user.id)
         db.session.add(article)
+        db.session.commit()
+        new_article = Article.query.order_by(Article.time.desc()).first()
+        photo = Photo(url=file_url, article_id=new_article.id)
+        db.session.add(photo)
         db.session.commit()
         flash('success!')
         return redirect(url_for('manage.index'))
@@ -54,7 +61,8 @@ def delete_article():
 @login_required
 def show_followed():
     follow = Follow.quert.filter(follower_id=g.current_user.id).all()
-    render_template('manage/show_followed.html', follow=follow)
+    users = Follow.get_followed(follow)
+    render_template('manage/show_followed.html', users=users)
 
 @manage.route('/manage/delete_followed', methods=['GET', 'POST'])
 @login_required
@@ -72,4 +80,5 @@ def delete_followed():
 @login_required
 def show_follower():
     follow = Follow.quert.filter(followed_id=g.current_user.id).all()
-    render_template('manage/show_follower.html', follow=follow)
+    users = Follow.get_follower(follow)
+    render_template('manage/show_follower.html', users=users)

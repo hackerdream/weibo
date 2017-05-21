@@ -61,15 +61,19 @@ def vote(article_id):
     return render_template('activity_details.html',
                            article=article, host=host, comments=comments)
 
-@admin.route('/admin/follow/<user_id>', methods=['GET', 'POST'])
+@admin.route('/admin/follow/<user_name>', methods=['GET', 'POST'])
 @login_required
-def add_follow(user_id):
-    follow = Follow(followed_id=user_id,
+def add_follow(user_name):
+    user = User.query.filter_by(name=user_name)
+    if g.user.is_follower(user):
+        flash('you are already following this user')
+        redirect(url_for('.show_one', user_id=user.id))
+    follow = Follow(followed_id=user.id,
                     follower_id=g.user.id)
     db.session.add(follow)
     db.session.commit()
     flash('success')
-    return redirect(url_for('admin.homepage'))
+    return redirect(url_for('.show_one', user_id=user.id))
 
 @admin.route('/admin/search', methods=['POST'])
 @login_required
