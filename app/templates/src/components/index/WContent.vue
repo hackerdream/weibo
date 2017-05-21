@@ -188,7 +188,7 @@
                     </div>
                     <div class="clearFLoat"></div>
                     <a class="login-weibo">
-                        <span>登录</span>
+                        <span @click="login()">登录</span>
                     </a>
                 </footer>
             </div>
@@ -575,7 +575,7 @@
         color: #808080;
     }
 
-    .sub-info-box span:hover{
+    .sub-info-box span:hover {
         color: #eb7350;
     }
 
@@ -595,7 +595,24 @@
         data(){
             return {
                 moreThreePicture: true,
-                lessThreePicture: false
+                lessThreePicture: false,
+                email: '',
+                password: ''
+
+            }
+        },
+        methods: {
+            login()
+            {
+                console.log("hello");
+                this.axios.post('/user_login', {
+                    email: this.email,
+                    password: this.password
+                }).then(function (res) {
+                    window.location.href = '/weibo';
+                }).catch(function (err) {
+                    console.log(err);
+                })
             }
         }
     }

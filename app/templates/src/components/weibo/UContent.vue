@@ -11,18 +11,7 @@
                     <div class="article-img-push">
                         <a><i class="fa fa-picture-o" style="color:#84c002;" aria-hidden="true"></i>
                             <em style="color:#918ea5">图片</em></a>
-                        <div class="album-img-list">
-                            <ul>
-                                <li v-for="img in imgList">
-                                    <div class="album-bg-img"><img :src='img.src'></div>
-                                </li>
 
-                            </ul>
-                        </div>
-                        <div class="album">
-                            <label for="img-upload">上传照片</label>
-                            <image-html5-upload :img-arr.sync="imgList"></image-html5-upload>
-                        </div>
                     </div>
                     <div class="article-push">
                         <a>
@@ -582,7 +571,7 @@
 </style>
 <script>
     import Repeat from './URepeatList.vue'
-    import imageHtml5Upload from '../UploadImg.vue'
+
     export default{
         data(){
             return {
