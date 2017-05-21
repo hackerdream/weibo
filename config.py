@@ -36,7 +36,7 @@ class Config:
 
     UPLOAD_PHOTOS_DEST = './static/public/imgs'
     UPLOAD_PHOTOS_ALLOW = IMAGES
-
+    WTF_CSRF_ENABLED = False
 
     @staticmethod
     def init_app(app):

@@ -3,12 +3,13 @@
 # encoding: utf-8
 
 from flask_script import Manager, Shell
-
+from flask_wtf.csrf import CsrfProtect
 from app import create_app, db
 
 app = create_app()
 manager = Manager(app)
 db.create_all(app=app)
+CsrfProtect(app)
 
 
 def make_shell_context():

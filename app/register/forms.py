@@ -18,10 +18,10 @@ class RegistrationForm(Form):
     password2 = PasswordField('Confirm password', validators=[DataRequired(message=u'这里必须填哦')])
 
 
-    def validate_email(self, field):
-        if User.query.filter_by(email=field.data).first():
-            raise ValidationError(u'该邮箱已经注册')
-
-    def validate_name(self, field):
-        if User.query.filter_by(name=field.data).first():
-            raise ValidationError(u'该用户名已存在')
+    # def validate_email(self, field):
+    #     if User.query.filter_by(email=field.data).first():
+    #         raise ValidationError(u'该邮箱已经注册')
+    #
+    # def validate_name(self, field):
+    #     if User.query.filter_by(name=field.data).first():
+    #         raise ValidationError(u'该用户名已存在')
