@@ -4,7 +4,7 @@
             <h1>账号登录</h1>
             <div class="login-box">
                 <input type="email" placeholder="请输入邮箱" v-model="email">
-                <input type="password" placeholder="请输入密码" v-modul="password">
+                <input type="password" placeholder="请输入密码" v-model="password">
             </div>
             <footer>
                 <div class="login-msg">
@@ -116,6 +116,7 @@
         },
         methods:{
             login(){
+                console.log("effect");
                 this.axios.post('/user_login',{
                     email:this.email,
                     password:this.password

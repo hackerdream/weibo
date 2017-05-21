@@ -24,7 +24,7 @@ import os
 #         return redirect(url_for('login.user_login'))
 #     return render_template('login/unconfirmed.html')
 
-@login.route('/',methods=['POST'])
+@login.route('/',methods=['GET'])
 @login.route('/<int:page>')
 def index(page=1):
     articles = Article.query.order_by(Article.time.desc())
@@ -32,17 +32,17 @@ def index(page=1):
     return render_template('src/views/index.html', page=page, pagination=pagination,
     articles=articles, endpoint='index.test')
 
-@login.route('/', methods=['GET', 'POST'])
+@login.route('/user_login', methods=['GET', 'POST'])
 def user_login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
-            if not user.confirmed:
-                email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
-                return render_template('src/views/index.html', user=user, email_url=email_url)
-            return redirect(url_for('index'))
+            # if not user.confirmed:
+            #     email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
+            #     return render_template('src/views/index.html', user=user, email_url=email_url)
+            return redirect(url_for('admin.homepage'))
         flash(u'检查一下是不是邮箱或者密码输错了')
     return render_template('src/views/index.html', form=form)
 
