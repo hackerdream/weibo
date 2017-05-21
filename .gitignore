@@ -7,9 +7,9 @@ yarn-error.log
 venv
 app/admin/views.pyc
 app/login/views.pyc
-app/manage/views.pyc
 app/register/views.pyc
-app/register/forms.pyc
-app/login/forms.pyc
-app/manage/forms.pyc
+app/manage/views.pyc
 app/admin/forms.pyc
+app/login/forms.pyc
+app/register/forms.pyc
+app/manage/forms.pyc
