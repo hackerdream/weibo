@@ -8,14 +8,10 @@ from ..models import User
 
 
 class RegistrationForm(Form):
-    email = StringField('Email', validators=[DataRequired(message=u'还没输入邮箱'), Length(1, 128),
-                                             Email(message=u'格式不对哦')])
-    name = StringField('Name', validators=[
-        DataRequired(message=u'这里必须填哦'), Length(1, 64, message=u'必须1到64位字符串'),
-        Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0, message=u'必须由1到64位以字母开头的数字和字母组成')])
-    password = PasswordField('Password', validators=[
-        DataRequired(message=u'密码都不填怎么行'), EqualTo('password2', message=u'密码不一致')])
-    password2 = PasswordField('Confirm password', validators=[DataRequired(message=u'这里必须填哦')])
+    email = StringField('Email', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+  #  password2 = PasswordField('Confirm password', validators=[DataRequired()])
 
 
     # def validate_email(self, field):

@@ -5,3 +5,11 @@ npm-debug.log
 yarn-error.log
 .idea
 venv
+app/admin/views.pyc
+app/login/views.pyc
+app/register/views.pyc
+app/manage/views.pyc
+app/admin/forms.pyc
+app/login/forms.pyc
+app/register/forms.pyc
+app/manage/forms.pyc
