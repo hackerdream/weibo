@@ -9,6 +9,8 @@ from . import db, login_manager
 from flask import current_app, request
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import  SQLAlchemy
+from sqlalchemy import desc
+import json
 
 class Article(db.Model):
     __tablename__ = 'Article'
@@ -174,5 +176,16 @@ class Comment(db.Model):
 def get_articles(follows):
     articles = []
     for follow in follows:
-        articles.append(Article.query.filter_by(Article.host_id==follow.followed_id).first())
+        article = Article.query.filter(Article.host_id == follow.followed_id).order_by(desc(Article.time))
+        host = User.query.filter_by(id=follow.followed_id).first()
+        for one in article:
+            imgs = Photo.query.filter_by(article_id=one.id)
+            photo = []
+            for img in imgs:
+                ob = {'url': img.url}
+                photo.append(ob)
+            tmp = {"host": host.name, "text": one.text, "up": one.up, "time": one.time}
+            articles.append(tmp)
     return articles
+
+

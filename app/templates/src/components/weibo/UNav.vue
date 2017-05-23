@@ -33,7 +33,7 @@
                 <div class="nav-login left" v-if="isLogin">
                     <router-link to="#">
                         <em class="fa fa-user-o" aria-hidden="true"></em>
-                        <em>我是帅哥</em>
+                        <em>{{username}}</em>
                     </router-link>
                 </div>
             </div>
@@ -216,6 +216,9 @@
             isLogin: {
                 type: Boolean,
                 default: false
+            },
+            username:{
+                type:String
             }
         },
         methods: {

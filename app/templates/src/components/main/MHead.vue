@@ -6,10 +6,10 @@
                     <img src="../../../../static/public/imgs/mt4.jpg" width="100" height="100"
                          style="border-radius:50%;">
                 </div>
-                <p style="margin-top:10px;font-size:18px;">最帅的人</p>
+                <p style="margin-top:10px;font-size:18px;">{{user_name}}</p>
                 <p style="margin-top:10px;font-size:12px;">我只因为你而嫣然一笑</p>
                 <div style="    margin-top: 15px;text-align: center;">
-                    <div style="display: inline-block;">
+                    <div v-show="isOwn" style="display: inline-block;">
                         <router-link to="#"
                                      style="display: inline-block;height: 34px;line-height: 35px;padding: 0 15px;font-size: 14px;"
                                      class="head-follow">
@@ -98,10 +98,28 @@
 </style>
 <script>
     export default{
+        created(){
+            var that = this;
+            this.uid = window.location.pathname.split("/")[1];
+            this.$axios.get('/main/'+this.uid+'/user').then(function (res) {
+                console.log(res.data);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
         data(){
             return {
-                isFriend: true
+                isFriend: true,
+                user_name: '',
+                uid: null,
+                user_id:null
+            }
+        },
+        computed: {
+            isOwn(){
+                return this.uid == this.user_id
             }
         }
+
     }
 </script>

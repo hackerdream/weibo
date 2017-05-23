@@ -32,8 +32,11 @@ def create_app():
     from .register import register as register_blueprint
     app.register_blueprint(register_blueprint)
 
-
     from .admin import admin as hosts_blueprint
     app.register_blueprint(hosts_blueprint)
+
+    from .manage import manage as manage_blueprint
+    app.register_blueprint(manage_blueprint)
+
 
     return app

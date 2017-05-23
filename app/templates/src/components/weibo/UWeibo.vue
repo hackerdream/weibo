@@ -2,19 +2,32 @@
 
     <div id="app">
 
-        <u-nav class="nav" :isLogin=true></u-nav>
+        <u-nav class="nav" :isLogin=true :username = user_name></u-nav>
 
-    <router-view></router-view>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
     import UNav from './UNav.vue'
-    import UContent from './UContent.vue'
 
     export default {
+        data(){
+          return {
+              user_name:'',
+              user_id:null
+          }
+        },
+        created(){
+            var that = this;
+            this.$axios.get('/weibo/user').then(function (res) {
+                that.user_name = res.data.name;
+                    }).catch(function (err) {
+                console.log(err);
+            });
+        },
         components: {
-            UNav, UContent
+            UNav
         },
         methods: {
             close(){

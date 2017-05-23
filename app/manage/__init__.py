@@ -4,7 +4,7 @@
 from flask import Blueprint
 
 
-manage = Blueprint('manage', __name__)
+manage = Blueprint('manage', __name__, template_folder='templates', static_folder='static')
 
 
 from . import views

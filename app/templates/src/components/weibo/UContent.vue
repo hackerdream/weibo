@@ -4,51 +4,61 @@
         <div class="content">
 
             <div class="article-edit">
-                <textarea class="edit-box">
+                <textarea class="edit-box" v-model="weibo_content">
 
                 </textarea>
                 <div class="article-edit-bar">
-                    <div class="article-img-push">
-                        <a><i class="fa fa-picture-o" style="color:#84c002;" aria-hidden="true"></i>
-                            <em style="color:#918ea5">图片</em></a>
-
+                    <div v-show="imgs.length >0">
+                        <ul>
+                            <li v-for="image in imgs"
+                                style="display:inline-block;position:relative;width:100px;height:100px;margin-left:10px;">
+                                <img :src="image.base64" width="100" height="100" style="display:inline-block;"/>
+                                <a href="#" style="position: absolute;top:0;right:0;" @click='delImage($index)'>
+                                    <em class="fa fa-times" aria-hidden="true"></em>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="article-push">
-                        <a>
-                            <span>提交</span>
+
+                    <div class="article-img-push">
+                        <a class="article-img-upload">
+                            <em class="fa fa-picture-o" style="color:#84c002;" aria-hidden="true"></em>
+                            <em style="color:#918ea5">图片</em>
+                            <div>
+                                <input id="inputFile" type="file" accept="image/png,image/gif,image/jpg" multiple
+                                       @change="onFileChange">
+                            </div>
                         </a>
+
+                        <div class="article-push" @click="submitEdit">
+                            <a>
+                                <span>提交</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <ul class="article">
-                <li class="article-item" v-for="item in face">
+                <li class="article-item" v-for="article in articles">
                     <div class="article-detail">
                         <router-link to="#" class="article-detail-img">
                             <img src="static/public/imgs/infoFace.jpg" width="50" height="50">
                         </router-link>
                         <div class="article-detail-info">
                             <div class="wb-info">
-                                <router-link to="#" class="wb-info-name">中国知青青年</router-link>
+                                <router-link to="#" class="wb-info-name">{{article.host}}</router-link>
                             </div>
                             <div class="wb-time">
-                                5月11日 07:10 来自 iPhone 6s Plus
+                                {{article.time}}
                             </div>
                             <div class="wb-text">
-                                【历史是有痕迹的】上一代的恩怨，后辈们吸取教训，不作恶，是做人的最基本底线。认错的认错，放下的放下吧，就是给自己一个舒服的现在，不是嚒。
+                                {{article.text}}
                             </div>
                             <div class="wb-img">
                                 <ul class="wb-media">
-                                    <li>
-                                        <img src="static/public/imgs/mt1.jpg">
-                                    </li>
-                                    <li>
-                                        <img src="static/public/imgs/mt2.jpg">
-                                    </li>
-                                    <li>
-                                        <img src="static/public/imgs/mt3.jpg">
-                                    </li>
-                                    <li>
+                                    <li v-for="photo in article.photo">
+                                        <img :src="photo.url">
                                         <img src="static/public/imgs/mt4.jpg">
                                     </li>
                                 </ul>
@@ -106,11 +116,11 @@
 
         <div class="W-person-info">
             <div class="W-person-info-face">
-                <img src="static/public/imgs/mt4.jpg" width="50" height="50" alt="我是帅比"
-                     class="person-info-face">
+                <img src="static/public/imgs/mt3.jpg" width="50" height="50" alt="我是帅比"
+                     class="person-info-face" @click="toMainPage">
             </div>
             <div class="person-info-box">
-                <div class="person-info-name">
+                <div class="person-info-name" @click="toMainPage">
                     <span>最帅的人</span>
                 </div>
                 <ul class="user-atten">
@@ -204,7 +214,7 @@
 
     .article-edit {
         width: 680px;
-        height: 150px;
+        min-height: 150px;
         padding: 20px 20px;
         margin-top: 10px;
         outline-style: none;
@@ -224,7 +234,6 @@
     .article-edit-bar {
         display: block;
         width: 100%;
-        height: 30px;
         margin-top: 10px;
         overflow: hidden;
     }
@@ -232,7 +241,7 @@
     .article-img-push {
         display: block;
         float: left;
-        width: 100px;
+        width: 100%;
         height: 30px;
     }
 
@@ -242,6 +251,32 @@
         width: 60px;
         height: 30px;
         margin: 0 auto;
+    }
+
+    .article-img-upload {
+        display: inline-block;
+        position: relative;
+        width: 60px;
+        height: 30px;
+    }
+
+    .article-img-push .article-img-upload input:hover {
+        cursor: pointer !important;
+    }
+
+    .article-img-push .article-img-upload:hover {
+        cursor: pointer !important;
+    }
+
+    .article-img-upload input {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer
     }
 
     .article-push a {
@@ -570,65 +605,90 @@
     }
 </style>
 <script>
-    import Repeat from './URepeatList.vue'
 
+    import Repeat from './URepeatList.vue'
+    import store from '../../store/store.js'
     export default{
+        created(){
+            var that = this;
+            this.$axios.get('/weibo/article')
+                    .then(function (resp) {
+                        [].forEach.call(resp.data, function (item) {
+                            that.articles.push(item);
+                        })
+                    });
+            this.$axios.get('/weibo/user').then(function (res) {
+                that.user_id = res.data.id;
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
         data(){
             return {
+                articles: [],
                 isOnClickToCom: false,
-                face: [
-                    {
-                        name: "gello",
-                        age: 12,
-                        repeat: false,
-                        children: [
-                            {
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            },
-                            {
-
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            },
-                            {
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            },
-                            {
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            }
-                        ]
-                    },
-                    {
-                        name: "gello",
-                        age: 12,
-                        repeat: false,
-                        children: [{
-                            name: "hello",
-                            repeat: false
-                        }]
-                    },
-                    {
-                        name: "gello",
-                        age: 12,
-                        repeat: false,
-                        children: [{
-                            name: "hello",
-                            repeat: false
-                        }]
-                    }
-                ]
-
+                imgs: [],
+                weibo_content: '',
+                user_id:null
             }
         },
         components: {
             Repeat
+        },
+        methods: {
+            addPic () {
+                $('input[type=file]').trigger('click');
+                return false
+            },
+            onFileChange (e) {
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length) return;
+                console.log("files[0]", files)
+                this.createImage(files)
+            },
+            createImage (file) {
+                var that = this;
+                var reader = null;
+                var leng = file.length;
+                for (var i = 0; i < leng; i++) {
+                    reader = new window.FileReader();
+                    reader.readAsDataURL(file[i]);
+                    console.log("files1", file[i].name);
+                    var fileName = file[i].name;
+                    reader.onload = function (e) {
+                        that.imgs.push({
+                            base64: e.target.result,
+                            name: fileName
+                        });
+                    }
+                }
+            },
+            removeImage: function (e) {
+                this.imgs = []
+            },
+            delImage: function (index) {
+                this.imgs.shift(index)
+            },
+            submitEdit(){
+                var that = this;
+                console.log({
+                    text: that.weibo_content,
+                    imgs: that.imgs
+                });
+                this.$axios.post('/weibo/write_article', {
+                    text: that.weibo_content,
+                    imgs: that.imgs
+                })
+                        .then(function (resp) {
+                            console.log(resp);
+                            window.location.href = '/weibo'
+                        }).catch(function (err) {
+                    console.log(err);
+                })
+            },
+            toMainPage(){
+                window.location.href = '/'+this.user_id
+            }
         }
     }
 </script>

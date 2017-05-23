@@ -42,6 +42,7 @@
     import MHead from './MHead.vue'
 
     export default{
+
         components: {
             MContent, MNav,MHead
         }

@@ -32,7 +32,7 @@
                                 </span>
                         </div>
                     </div>
-                    <div class="re-repeat-detail" v-if="item.repeat">
+                    <div class="re-repeat-detail" v-show="item.repeat">
                         <div class="repeat-wr">
                             <textarea type="text" class="W-input"></textarea>
                         </div>

@@ -9,6 +9,8 @@ from flask_login import current_user
 from ..register.views import send_email
 from .. import db
 import os
+
+
 # @login.before_app_request
 # def before_request():
 #     if current_user.is_authenticated:
@@ -24,13 +26,11 @@ import os
 #         return redirect(url_for('login.user_login'))
 #     return render_template('login/unconfirmed.html')
 
-@login.route('/',methods=['GET'])
-@login.route('/<int:page>')
-def index(page=1):
+@login.route('/', methods=['GET'])
+def index():
     articles = Article.query.order_by(Article.time.desc())
-    pagination = articles.paginate(page, 2, False)
-    return render_template('src/views/index.html', page=page, pagination=pagination,
-    articles=articles, endpoint='index.test')
+    return render_template('src/views/index.html')
+
 
 @login.route('/user_login', methods=['GET', 'POST'])
 def user_login():
@@ -42,7 +42,7 @@ def user_login():
             # if not user.confirmed:
             #     email_url = 'http://mail.' + form.email.data.split('@', 1)[-1]
             #     return render_template('src/views/index.html', user=user, email_url=email_url)
-            return render_template('src/views/weibo.html')
+            return redirect(url_for('admin.homepage'))
         flash(u'检查一下是不是邮箱或者密码输错了')
     return render_template('src/views/index.html', form=form)
 

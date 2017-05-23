@@ -604,7 +604,6 @@
         methods: {
             login()
             {
-                console.log("hello");
                 this.$axios.post('/user_login', {
                     email: this.email,
                     password: this.password
