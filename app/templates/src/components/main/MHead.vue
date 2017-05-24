@@ -100,9 +100,9 @@
     export default{
         created(){
             var that = this;
-            this.uid = window.location.pathname.split("/")[1];
-            this.$axios.get('/main/'+this.uid+'/user').then(function (res) {
-                console.log();
+            this.uid = window.location.pathname.split("/")[2];
+            this.$axios.get('/main'+this.uid+'/user').then(function (res) {
+                console.log(res.data);
             }).catch(function (err) {
                 console.log(err);
             });
@@ -112,7 +112,7 @@
                 isFriend: true,
                 user_name: '',
                 uid: null,
-                user_id:null
+                user_id: null
             }
         },
         computed: {

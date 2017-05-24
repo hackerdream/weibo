@@ -27,15 +27,15 @@
                 </div>
                 <div class="content-box right">
                     <ul class="article">
-                        <li class="article-item" v-for="item in face">
+                        <li class="article-item" v-for="article in articles">
                             <div class="article-detail">
                                 <router-link to="#" class="article-detail-img">
-                                    <img src="static/public/imgs/infoFace.jpg" width="50" height="50">
+                                    <img src="/static/public/imgs/infoFace.jpg" width="50" height="50">
                                 </router-link>
                                 <div class="article-detail-info">
                                     <div class="wb-info">
-                                        <router-link to="#" class="wb-info-name">中国知青青年</router-link>
-                                        <a class="wb-mark">
+                                        <router-link to="#" class="wb-info-name">{{article.host}}</router-link>
+                                        <a class="wb-mark" v-show="isOwn">
                                             <em class="fa fa-plus" aria-hidden="true"></em>
                                             <span>加关注</span>
                                         </a>
@@ -44,21 +44,12 @@
                                         5月11日 07:10 来自 iPhone 6s Plus
                                     </div>
                                     <div class="wb-text">
-                                        【历史是有痕迹的】上一代的恩怨，后辈们吸取教训，不作恶，是做人的最基本底线。认错的认错，放下的放下吧，就是给自己一个舒服的现在，不是嚒。
+                                        {{article.text}}
                                     </div>
                                     <div class="wb-img">
                                         <ul class="wb-media">
-                                            <li>
-                                                <img src="static/public/imgs/mt1.jpg">
-                                            </li>
-                                            <li>
-                                                <img src="static/public/imgs/mt2.jpg">
-                                            </li>
-                                            <li>
-                                                <img src="static/public/imgs/mt3.jpg">
-                                            </li>
-                                            <li>
-                                                <img src="static/public/imgs/mt4.jpg">
+                                            <li v-for='photo in article.photo'>
+                                                <img :src="photo.url">
                                             </li>
                                         </ul>
                                     </div>
@@ -96,7 +87,7 @@
                                         <a>
                                             <span>
                                                 <em class="fa fa-thumbs-o-up" aria-hidden="true"></em>
-                                                <em>23333</em>
+                                                <em>{{up}}</em>
                                             </span>
                                         </a>
                                     </li>
@@ -118,7 +109,7 @@
 
             </div>
         </div>
-    <router-view></router-view>
+        <router-view></router-view>
     </div>
 </template>
 <style scoped>
@@ -150,21 +141,24 @@
         margin: 0 auto;
     }
 
-    @media screen and (max-width:1000px) {
-        .m-content .m-user-info{
+    @media screen and (max-width: 1000px) {
+        .m-content .m-user-info {
             display: none;
         }
-        .m-content .content{
+
+        .m-content .content {
             display: block;
             width: 722px;
             margin: 0 auto;
         }
-        .m-content .m-user{
+
+        .m-content .m-user {
             display: block;
             width: 722px;
             margin: 0 auto;
         }
     }
+
     .m-content a {
         color: #918ea5;
         font-size: 13px;
@@ -443,61 +437,51 @@
     import Repeat from './MRepeatList.vue'
 
     export default{
+        created(){
+            function modifyPhoto(photos){
+                [].forEach.call(photos,function (photo) {
+                    photo.url = '/'+photo.url;
+                });
+                return photos;
+            }
+            var that = this;
+            this.uid = window.location.pathname.split("/")[2];
+            this.$axios.get('/main/' + this.uid + '/article').then(function (res) {
+                that.user_id = res.data.id;
+                that.user_name = res.data.name;
+            });
+            this.$axios.get('/main/' + this.uid + '/article').then(function (res) {
+                [].forEach.call(res.data, function (item) {
+                    that.articles.push(
+                            {
+                                host: item.host,
+                                text: item.text,
+                                photo: modifyPhoto(item.photo),
+                                time: item.time,
+                                up: item.up
+                            }
+                    )
+
+                })
+            })
+        },
         data(){
             return {
                 isOnClickToCom: false,
-                face: [
-                    {
-                        name: "gello",
-                        age: 12,
-                        repeat: false,
-                        children: [
-                            {
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            },
-                            {
-
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            },
-                            {
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            },
-                            {
-                                name: "gello",
-                                age: 12,
-                                repeat: false
-                            }
-                        ]
-                    },
-                    {
-                        name: "gello",
-                        age: 12,
-                        repeat: false,
-                        children: [{
-                            name: "hello",
-                            repeat: false
-                        }]
-                    },
-                    {
-                        name: "gello",
-                        age: 12,
-                        repeat: false,
-                        children: [{
-                            name: "hello",
-                            repeat: false
-                        }]
-                    }
-                ]
+                isOwn: false,
+                articles: [],
+                user_id: null,
+                user_name: '',
+                uid: null
             }
         },
         components: {
             Repeat
+        },
+        computed: {
+            isOwn(){
+                return this.uid === this.user_id
+            }
         }
     }
 </script>

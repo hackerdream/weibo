@@ -119,21 +119,22 @@ def search_results(query):
                            results=results)
 
 
-@admin.route('/<int:mid>', methods=['GET', 'POST'])
+@admin.route('/main/<int:mid>', methods=['GET', 'POST'])
 def main(mid):
     return render_template('src/views/main.html')
 
 
-@admin.route('/main/<mid>/user', methods=['GET'])
+@admin.route('/main/<int:mid>/user', methods=['GET'])
 @login_required
 def mainname(mid):
     host = User.query.filter_by(id=mid).first()
     name = {"name": host.name, 'id': host.id}
     namedata = dict(name)
+    print namedata;
     return jsonify(namedata)
 
 
-@admin.route('/<mid>/article', methods=['GET', 'POST'])
+@admin.route('/main/<int:mid>/article', methods=['GET', 'POST'])
 def showmain(mid):
     marticles = Article.query.filter_by(host_id=mid)
     m = User.query.filter_by(id=mid).first()

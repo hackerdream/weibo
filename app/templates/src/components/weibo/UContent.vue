@@ -687,7 +687,7 @@
                 })
             },
             toMainPage(){
-                window.location.href = '/'+this.user_id
+                window.location.href = '/main/'+this.user_id;
             }
         }
     }
