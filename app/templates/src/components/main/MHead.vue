@@ -102,7 +102,7 @@
             var that = this;
             this.uid = window.location.pathname.split("/")[1];
             this.$axios.get('/main/'+this.uid+'/user').then(function (res) {
-                console.log(res.data);
+                console.log();
             }).catch(function (err) {
                 console.log(err);
             });

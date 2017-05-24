@@ -25,9 +25,10 @@ def add_article():
     db.session.commit()
     new_article = Article.query.order_by(Article.time.desc()).first()
     for img in temp:
-        imgdata = base64.b64encode(img['base64'])
+        imgStr = img['base64'].split(',')[1]
+        imgdata = base64.b64decode(imgStr)
         url = 'static/public/imgs/' + img['name']
-        file = open('app/'+url, 'wb')
+        file = open('app/' + url, 'wb')
         file.write(imgdata)
         file.close()
         photo = Photo(url=url, article_id=new_article.id)
