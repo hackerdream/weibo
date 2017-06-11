@@ -6,11 +6,11 @@
                      style="background-color:#261d3b;width:230px;height:300px;float:left; font-size:14px;color:#918ea5;text-align:center;">
                     <ul>
                         <li>
-                            <router-link to="/manager/111/follow">关注</router-link>
+                            <router-link :to="{ name : 'follow' , params: { id : uid } }">关注</router-link>
                         </li>
 
                         <li>
-                            <router-link to="/manager/111/fensi">粉丝</router-link>
+                            <router-link :to="{ name : 'fensi' , params: { id : uid } }">粉丝</router-link>
                         </li>
                     </ul>
                 </div>
@@ -22,72 +22,18 @@
                             </span>
                         </div>
                         <ul class="follow-list">
-                            <li class="follow-list-box">
+                            <li class="follow-list-box" v-for="follow in follows">
                                 <div class="list-detail">
                                     <div class="list-face">
-                                        <router-link to="">
+                                        <router-link :to="{ name : 'home' ,params:{id:follow.id}}">
                                             <img src="../../../../static/public/imgs/mt4.jpg" width="50" height="50">
                                         </router-link>
                                     </div>
                                     <div class="list-info">
                                         <div class="name">
-                                            <span>我是大帅比</span>
+                                            <span>{{follow.name}}</span>
                                         </div>
-                                        <div class="status">互相关注</div>
-                                        <div class="summary">
-                                            <span>吃饭睡觉打豆豆</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="follow-list-box">
-                                <div class="list-detail">
-                                    <div class="list-face">
-                                        <router-link to="">
-                                            <img src="../../../../static/public/imgs/mt4.jpg" width="50" height="50">
-                                        </router-link>
-                                    </div>
-                                    <div class="list-info">
-                                        <div class="name">
-                                            <span>我是大帅比</span>
-                                        </div>
-                                        <div class="status">互相关注</div>
-                                        <div class="summary">
-                                            <span>吃饭睡觉打豆豆</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="follow-list-box">
-                                <div class="list-detail">
-                                    <div class="list-face">
-                                        <router-link to="">
-                                            <img src="../../../../static/public/imgs/mt4.jpg" width="50" height="50">
-                                        </router-link>
-                                    </div>
-                                    <div class="list-info">
-                                        <div class="name">
-                                            <span>我是大帅比</span>
-                                        </div>
-                                        <div class="status">互相关注</div>
-                                        <div class="summary">
-                                            <span>吃饭睡觉打豆豆</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="follow-list-box">
-                                <div class="list-detail">
-                                    <div class="list-face">
-                                        <router-link to="">
-                                            <img src="../../../../static/public/imgs/mt4.jpg" width="50" height="50">
-                                        </router-link>
-                                    </div>
-                                    <div class="list-info">
-                                        <div class="name">
-                                            <span>我是大帅比</span>
-                                        </div>
-                                        <div class="status">互相关注</div>
+                                        <div class="status">{{follow.rel}}</div>
                                         <div class="summary">
                                             <span>吃饭睡觉打豆豆</span>
                                         </div>
@@ -232,5 +178,26 @@
     }
 </style>
 <script>
-    export default{}
+    export default{
+        created(){
+            this.uid = window.location.pathname.split("/")[2];
+            var that = this;
+            this.$axios.get('/manage/show_followed/'+this.uid)
+                    .then(function (resp) {
+                        [].forEach.call(resp.data,function (item) {
+                            that.follows.push({
+                                name:item.name,
+                                id:item.id,
+                                rel:item.rel
+                            })
+                        })
+                    })
+        },
+        data(){
+            return {
+                follows: [],
+                uid:null
+            }
+        }
+    }
 </script>

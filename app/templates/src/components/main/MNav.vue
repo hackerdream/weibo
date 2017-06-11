@@ -15,10 +15,10 @@
                 <div class="nav-content left">
                     <ul>
                         <li>
-                            <router-link to="/home" class="left">
+                            <a href="/weibo" class="left">
                                 <em class="fa fa-home fa-2x left"></em>
                                 <em>首页</em>
-                            </router-link>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="nav-login left" v-if="isLogin">
                     <router-link to="#">
                         <em class="fa fa-user-o" aria-hidden="true"></em>
-                        <em>我是帅哥</em>
+                        <em>{{username}}</em>
                     </router-link>
                     <div class="user-manager">
                         <a class="user-manager-box" @mouseenter="showItem()"
@@ -45,7 +45,7 @@
                             <!--data start-->
                             <ul>
                                 <li>
-                                    <router-link to="/manager/111">帐号设置</router-link>
+                                    <router-link :to="{ name:'manage',params:{id:uid} }">帐号设置</router-link>
                                 </li>
                                 <li>
                                     <a>退出</a>
@@ -62,6 +62,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </template>
@@ -311,20 +312,45 @@
 
 
     export default{
+        created(){
+            var that = this;
+            this.uid = window.location.pathname.split("/")[2];
+            this.$axios.get('/weibo/user').then(function (res) {
+                that.user_id = res.data.id;
+            })
+        },
         props: {
             isLogin: {
                 type: Boolean,
                 default: false
             }
-        },
+            ,
+            username: {
+                type: String,
+                default: ''
+            }
+        }
+        ,
+        data()
+        {
+            return {
+                uid: null
+            }
+        }
+        ,
         methods: {
-            showLogin(){
+            showLogin()
+            {
                 this.$emit('show-login')
-            },
-            showItem() {
+            }
+            ,
+            showItem()
+            {
                 document.getElementsByClassName('gn-topmenulist')[0].style.display = "block";
-            },
-            hideItem() {
+            }
+            ,
+            hideItem()
+            {
                 setTimeout("document.getElementsByClassName('gn-topmenulist')[0].style.display = \"none\";", 1200);
             }
         }

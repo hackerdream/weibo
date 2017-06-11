@@ -6,19 +6,19 @@
                 <div class="left m-user-info" style=" padding:12px 0;">
                     <ul class="user-atten">
                         <li>
-                            <router-link to="/manager/111/follow">
+                            <router-link :to="{ name : 'follow' , params: { id : uid } }">
                                 <strong>82</strong>
                                 <span>关注</span>
                             </router-link>
                         </li>
                         <li>
-                            <router-link to="/manager/111/fensi">
+                            <router-link :to="{ name : 'fensi' , params : {id : uid} }">
                                 <strong>72</strong>
                                 <span>粉丝</span>
                             </router-link>
                         </li>
                         <li>
-                            <router-link to="/">
+                            <router-link to="#">
                                 <strong>5</strong>
                                 <span>微博</span>
                             </router-link>
@@ -87,7 +87,7 @@
                                         <a>
                                             <span>
                                                 <em class="fa fa-thumbs-o-up" aria-hidden="true"></em>
-                                                <em>{{up}}</em>
+                                                <em>{{article.up}}</em>
                                             </span>
                                         </a>
                                     </li>
@@ -438,32 +438,47 @@
 
     export default{
         created(){
-            function modifyPhoto(photos){
-                [].forEach.call(photos,function (photo) {
-                    photo.url = '/'+photo.url;
+            var that = this;
+
+            function modifyPhoto(photos) {
+                [].forEach.call(photos, function (photo) {
+                    photo.url = '/' + photo.url;
                 });
                 return photos;
             }
-            var that = this;
-            this.uid = window.location.pathname.split("/")[2];
-            this.$axios.get('/main/' + this.uid + '/article').then(function (res) {
-                that.user_id = res.data.id;
-                that.user_name = res.data.name;
-            });
-            this.$axios.get('/main/' + this.uid + '/article').then(function (res) {
-                [].forEach.call(res.data, function (item) {
-                    that.articles.push(
-                            {
-                                host: item.host,
-                                text: item.text,
-                                photo: modifyPhoto(item.photo),
-                                time: item.time,
-                                up: item.up
-                            }
-                    )
+            function getMsg(uid){
+                that.$axios.get('/main/' + uid + '/article').then(function (res) {
+                    that.user_id = res.data.id;
+                    that.user_name = res.data.name;
+                });
+                that.$axios.get('/main/' + uid + '/article').then(function (res) {
+                    [].forEach.call(res.data, function (item) {
+                        that.articles.push(
+                                {
+                                    host: item.host,
+                                    text: item.text,
+                                    photo: modifyPhoto(item.photo),
+                                    time: item.time,
+                                    up: item.up,
+                                    isShow:item.isShow,
+                                    repeats:item.repeats
+                                }
+                        )
 
+                    })
                 })
-            })
+            }
+
+            if (this.$route.params.id) {
+                this.uid = this.$router.app._route.params.id;
+                getMsg(this.uid);
+            }
+            else {
+                this.uid = window.location.pathname.split("/")[2];
+                getMsg(this.uid);
+            }
+            console.log('uid'+this.uid);
+
         },
         data(){
             return {

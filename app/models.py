@@ -8,9 +8,10 @@ from flask_login import UserMixin, AnonymousUserMixin
 from . import db, login_manager
 from flask import current_app, request
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from . import  SQLAlchemy
+from . import SQLAlchemy
 from sqlalchemy import desc
 import json
+
 
 class Article(db.Model):
     __tablename__ = 'Article'
@@ -18,7 +19,7 @@ class Article(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey('User.id'))
     text = db.Column(db.Text(140))
     time = db.Column(db.DateTime, default=datetime.utcnow)
-    up = db.Column(db.Integer, default = 0)
+    up = db.Column(db.Integer, default=0)
     comments = db.relationship('Comment', backref='article', lazy='dynamic')
     photos = db.relationship('Photo', backref='article', lazy='dynamic')
 
@@ -28,6 +29,7 @@ class Article(db.Model):
     def new_up(db):
         key = Article.query.first()
         key.up += 1
+
 
 class Follow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,17 +46,11 @@ class Follow(db.Model):
         else:
             db.session.add(self)
 
-    def get_followed(follows):
-        users = []
-        for follow in follows:
-            users.append(User.query.filter_by(User.id==follow.followed_id).first())
-        return users
+    def is_followed(self, user):
+        return self.followed_id.filter_by(followed_id=user).first() is not None
 
-    def get_follower(follows):
-        users = []
-        for follow in follows:
-            users.append(User.query.filter_by(User.id==follow.follower_id).first())
-        return users
+    def is_follower(self, user):
+        return self.follower_id.filter_by(follower_id=user).first() is not None
 
 
 class User(UserMixin, db.Model):
@@ -84,7 +80,7 @@ class User(UserMixin, db.Model):
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
-        if  self.avatar_hash is None:
+        if self.avatar_hash is None:
             self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
 
     def gravatar(self, size=40, default='identicon', rating='g'):
@@ -130,7 +126,6 @@ class User(UserMixin, db.Model):
         db.session.commit()
         return True
 
-
     def change_name(self, new_name):
         if self.query.filter_by(name=new_name).first() is not None:
             return False
@@ -141,12 +136,6 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.name
-
-    def is_followed(self,user):
-        return self.followed_id.filter_by(followed_id=User.id).first() is not None
-
-    def is_follower(self,user):
-        return self.follower_id.filter_by(follower_id=User.id).first() is not None
 
 
 @login_manager.user_loader
@@ -187,5 +176,3 @@ def get_articles(follows):
             tmp = {"host": host.name, "text": one.text, "up": one.up, "time": one.time}
             articles.append(tmp)
     return articles
-
-

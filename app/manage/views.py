@@ -3,12 +3,13 @@
 
 from .forms import *
 from ..models import Article, Comment, User, Follow, Photo
-from flask import flash, redirect, url_for, request, render_template, g, current_app
+from flask import flash, redirect, url_for, request, render_template, g, current_app, jsonify
 from flask_login import login_required, current_user
 from .. import db
 from . import manage
 import base64
 from datetime import datetime
+from sqlalchemy import and_
 
 import json
 from ..register.views import send_email
@@ -65,30 +66,31 @@ def delete_article():
     return redirect(url_for('manage.manage_article', page=request.args.get('page', 1, type=int)))
 
 
-@manage.route('/manage/show_followed', methods=['GET', 'POST'])
-@login_required
-def show_followed():
-    follow = Follow.quert.filter(follower_id=g.current_user.id).all()
-    users = Follow.get_followed(follow)
-    render_template('manage/show_followed.html', users=users)
+@manage.route('/manage/show_followed/<int:uid>', methods=['GET', 'POST'])
+def show_followed(uid):
+    follows = Follow.query.filter_by(follower_id=uid)
+    date = []
+    for follow in follows:
+        u = User.query.filter_by(id=follow.followed_id).first()
+        m = Follow.query.filter(and_(Follow.followed_id == uid, Follow.follower_id == u.id)).first()
+        if m is not None:
+            one = {"name": u.name, "id": u.id, "rel": u'互相关注'}
+        else:
+            one = {"name": u.name, "id": u.id, "rel": u'已关注'}
+        date.append(one)
+    return jsonify(date)
 
 
-@manage.route('/manage/delete_followed', methods=['GET', 'POST'])
-@login_required
-def delete_followed():
-    form = DeletefollowedForm()
-    if form.validate_on_submit():
-        followed_id = int(form.followed_id.data)
-        follow = Follow.query.filter(followed_id=followed_id, follower_id=g.current_user.id).scalar()
-        db.session.delete(follow)
-        db.session.commit()
-        flash('success')
-        return redirect(url_for('manage.show_followed'))
-
-
-@manage.route('/manage/show_follower', methods=['GET', 'POST'])
-@login_required
-def show_follower():
-    follow = Follow.quert.filter(followed_id=g.current_user.id).all()
-    users = Follow.get_follower(follow)
-    render_template('manage/show_follower.html', users=users)
+@manage.route('/manage/show_follower/<int:uid>', methods=['GET', 'POST'])
+def show_follower(uid):
+    follows = Follow.query.filter_by(follower_id=uid)
+    date = []
+    for follow in follows:
+        u = User.query.filter_by(id=follow.follower_id).first()
+        m = Follow.query.filter(and_(Follow.follower_id == uid, Follow.followed_id == u.id)).first()
+        if m is not None:
+            one = {"name": u.name, "id": u.id, "rel": u'互相关注'}
+        else:
+            one = {"name": u.name, "id": u.id, "rel": u'被关注'}
+        date.append(one)
+    return jsonify(date)

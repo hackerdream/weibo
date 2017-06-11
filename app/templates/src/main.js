@@ -13,10 +13,22 @@ Vue.prototype.$axios = axios;
 
 const routes = [
     {path: '/', component: MContent},
-    {path: '/home',component:MContent},
-    {path: '/manager/：id/follow', component: Follow},
-    {path: '/manager/:id/fensi', component: Fensi},
-    {path: '/manager/:id',component:Manage}
+    {path: '/home/:id', name: 'home', component: MContent},
+    {
+        path: '/manage/follow/:id',
+        name: 'follow',
+        component: Follow
+    },
+    {
+        path: '/manage/fensi/:id',
+        name: 'fensi',
+        component: Fensi
+    },
+    {
+        path: '/manage/:id',
+        name: 'manage',
+        component: Manage
+    },
 
 ];
 

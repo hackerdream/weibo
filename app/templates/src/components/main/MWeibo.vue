@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div>
-            <m-nav class="nav" :isLogin=true></m-nav>
+            <m-nav class="nav" :isLogin=isLogin :username=user_name></m-nav>
         </div>
         <div class="">
             <m-head></m-head>
@@ -42,9 +42,26 @@
     import MHead from './MHead.vue'
 
     export default{
-
+        created(){
+            var that = this;
+            this.$axios.get('/weibo/user')
+                    .then(function (resp) {
+                        that.user_name = resp.data.name;
+                        if(that.user_name != undefined){
+                            that.isLogin = true;
+                            console.log(that.isLogin);
+                        }
+                    })
+        },
+        data(){
+            return {
+                user_name: '',
+                isLogin: false
+            }
+        },
         components: {
-            MContent, MNav,MHead
-        }
+            MContent, MNav, MHead
+        },
+
     }
 </script>
